@@ -6,7 +6,7 @@
   # Enable Docker Daemon and Utilities
   virtualisation.docker = {
     enable = true; # Enable the Docker daemon
-    enableOnBoot = true; # Start Docker on system boot
+    enableOnBoot = false; # Start Docker on system boot
     autoPrune.enable = true; # Automatically remove unused Docker resources
   };
 
