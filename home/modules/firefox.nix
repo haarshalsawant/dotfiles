@@ -15,23 +15,21 @@ in
         # Essential extensions
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          # privacy-badger  
-          # darkreader
-          # bitwarden # password manager
+          darkreader
         ];
 
         settings = {
           # Enable screenshot functionality
           "extensions.screenshots.disabled" = false;
           "screenshots.browser.component.enabled" = true;
-          
+
           # Enable context menu for screenshots
           "screenshots.browser.action.disabled" = false;
-          
+
           # Keyboard shortcut
           "devtools.screenshot.clipboard.enabled" = true;
           "devtools.screenshot.audio.enabled" = true;
-          
+
           # Basic privacy settings - less aggressive
           "browser.send_pings" = false;
           "browser.urlbar.speculativeConnect.enabled" = true;
@@ -83,7 +81,7 @@ in
           "browser.urlbar.suggest.bookmark" = true;
           "browser.urlbar.shortcuts.history" = true;
           "browser.urlbar.shortcuts.tabs" = true;
-          "browser.urlbar.suggest.engines" = true; 
+          "browser.urlbar.suggest.engines" = true;
           "browser.urlbar.suggest.history" = true;
           "browser.urlbar.suggest.openpage" = true;
           "browser.urlbar.suggest.topsites" = true;
@@ -92,13 +90,13 @@ in
           "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2,1.5,2.0";
           "privacy.firstparty.isolate" = false;
           "network.http.sendRefererHeader" = 2;
-          
+
           # Performance improvements
           "browser.cache.disk.enable" = true;
           "browser.cache.memory.enable" = true;
           "browser.cache.memory.capacity" = 524288;
           "browser.sessionstore.interval" = 60000;
-          
+
           # Media and DRM (needed for streaming services)
           "media.eme.enabled" = true;
           "media.gmp-widevinecdm.enabled" = true;
