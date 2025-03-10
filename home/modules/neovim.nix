@@ -13,6 +13,7 @@
       vim-surround
       vim-lastplace
       vim-sleuth
+      direnv-vim
 
       # VS Code-like UI
       telescope-nvim
