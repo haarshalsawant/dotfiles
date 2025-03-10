@@ -43,11 +43,12 @@
     asar
     fuse
     dos2unix
+    zoxide
 
     # -*-[ Editors & Viewers ]-*-
-    eza # Improved ls
-    bat # Improved cat
-    fd # Improved find
+    eza # ls
+    bat # cat
+    fd # find
     ripgrep # Better than grep
     dust # Disk usage visualization
 
