@@ -21,24 +21,21 @@
 │       ├── kitty
 │       ├── neovim
 │       └── zshell
-├── nix
-│   ├── apps
-│   │   ├── default.nix
-│   │   ├── devtools
-│   │   ├── notion-app-enhanced
-│   │   ├── printing.nix
-│   │   ├── steam.nix
-│   │   └── tlp.nix
-│   ├── c0d3h01
-│   │   ├── audio.nix
-│   │   ├── default.nix
-│   │   ├── desktop.nix
-│   │   ├── fonts.nix
-│   │   ├── networking.nix
-│   │   └── user.nix
-│   ├── hardware.nix
-│   └── nixman.nix
-└── scripts
-    ├── bootstrap.sh
-    └── update.sh
+└── nix
+    ├── apps
+    │   ├── default.nix
+    │   ├── devtools
+    │   ├── notion-app-enhanced
+    │   ├── printing.nix
+    │   ├── steam.nix
+    │   └── tlp.nix
+    ├── c0d3h01
+    │   ├── audio.nix
+    │   ├── default.nix
+    │   ├── desktop.nix
+    │   ├── fonts.nix
+    │   ├── networking.nix
+    │   └── user.nix
+    ├── hardware.nix
+    └── nixconfig.nix
 ```
