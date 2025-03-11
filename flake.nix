@@ -75,35 +75,8 @@
         packages = with pkgs; [
           nixpkgs-fmt
           nil
-          nodejs
         ];
-
-        # inputsFrom = [
-        #   self.devShells.${system}.backendShell
-        #   self.devShells.${system}.frontendShell
-        # ];
-        # inherit (self.devShells.${system}.backendShell) JAVA_HOME;
-        # inherit (self.devShells.${system}.frontendShell);
       };
-
-      # devShells.frontedShell = with pkgs; mkShell {
-      #   JAVA_HOME = jdk21.home;
-      #   buildInputs = [
-      #     gradle
-      #   ];
-      # };
-
-      # devShells.backendShell = with pkgs; mkShell {
-      #   buildInputs = [
-      #     nodejs
-      #     (with nodePackages; [
-      #       typescript
-      #       node2nix
-      #       typescript-language-server
-      #       prettier
-      #     ])
-      #   ];
-      # };
 
       # NixFormatter
       formatter.${system} = pkgs.nixpkgs-fmt;

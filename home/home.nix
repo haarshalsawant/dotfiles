@@ -51,7 +51,6 @@
     ventoy
     shc # Shell compiler
     nh # Nix Garbage Cleaner
-    waydroid # Android System
 
     # -*-[ Editors & Viewers ]-*-
     eza # ls

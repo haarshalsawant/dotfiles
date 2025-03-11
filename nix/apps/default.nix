@@ -54,7 +54,8 @@
 
     # -*-[ Development tools ]-*-
     # Web development tools.
-    # nodejs
+    nodejs_23
+    nodenv
     yarn
     postman #GUI
 

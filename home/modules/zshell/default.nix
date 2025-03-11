@@ -106,6 +106,7 @@
     ];
 
     envExtra = ''
+      export NPM_CONFIG_PREFIX="$HOME/.npm-global"
       export PATH="$HOME/.npm-global/bin:$PATH"
       export NVM_DIR="$HOME/.config/nvm"
       export EDITOR="nvim"
