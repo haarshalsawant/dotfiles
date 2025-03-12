@@ -8,7 +8,6 @@
 ├── README.md
 ├── README_TREE.md
 ├── assets
-│   ├── gitjump.png
 │   └── wallpaper.png
 ├── flake.lock
 ├── flake.nix
@@ -21,6 +20,7 @@
 │       ├── kitty
 │       ├── neovim
 │       └── zshell
+├── install.sh
 └── nix
     ├── apps
     │   ├── default.nix
@@ -36,6 +36,6 @@
     │   ├── fonts.nix
     │   ├── networking.nix
     │   └── user.nix
-    ├── hardware.nix
-    └── nixconfig.nix
+    ├── configuration.nix
+    └── hardware-configuration.nix
 ```
