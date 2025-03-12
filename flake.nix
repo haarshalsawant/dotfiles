@@ -48,7 +48,7 @@
       };
     in
     {
-      nixosConfigurations.NixOS = lib.nixosSystem {
+      nixosConfigurations.nixos = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
           # -*-[ System configurations, modules ]-*-
