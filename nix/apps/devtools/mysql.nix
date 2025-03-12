@@ -1,9 +1,28 @@
 { config, pkgs, ... }:
+
 {
-  # Keep existing MariaDB service
+  # Enable and configure MySQL (MariaDB)
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
+
+    # Ensure MySQL starts on boot
+    ensureDatabases = [ "testdb" ];
+    ensureUsers = [
+      {
+        name = "root";
+        ensurePermissions = { "*.*" = "ALL PRIVILEGES"; };
+        password = "1001";
+      }
+    ];
+
+    # Enforce native password authentication
+    settings = {
+      bind-address = "127.0.0.1";
+      port = 3306;
+      skip-networking = false;
+      default_authentication_plugin = "mysql_native_password";
+    };
   };
 
   # Install MySQL Workbench and MySQL 8.4
@@ -14,40 +33,16 @@
   ];
 
   # Add MySQL 8.4 to PATH for all users
-  environment.variables = {
-    PATH = [
-      "${pkgs.mysql84}/bin"
-    ];
-  };
+  environment.variables.PATH = [ "${pkgs.mysql84}/bin" ];
 
-  # Create a system activation script to setup MySQL environment
-  system.activationScripts.mysqlSetup = {
-    text = ''
-            # Create MySQL configuration directory if it doesn't exist
-            mkdir -p /etc/mysql
-      
-            # Create a default my.cnf file for MySQL client tools
-            if [ ! -f /etc/mysql/my.cnf ]; then
-              cat > /etc/mysql/my.cnf << EOF
-      [client]
-      port = 3306
-      socket = /run/mysqld/mysqld.sock
-
-      [mysql]
-      prompt = "MySQL [\d]> "
-      default-character-set = utf8mb4
-
-      [mysqldump]
-      max_allowed_packet = 64M
-      EOF
-              chmod 644 /etc/mysql/my.cnf
-            fi
-    '';
-    deps = [ ];
-  };
-
-  # Create MySQL data directory with proper permissions
+  # Ensure MySQL data directory has correct permissions
   systemd.tmpfiles.rules = [
     "d /var/lib/mysql 0700 mysql mysql -"
   ];
+
+  # Ensure MySQL starts on boot
+  systemd.services.mysql = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+  };
 }
