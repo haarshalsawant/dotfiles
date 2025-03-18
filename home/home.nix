@@ -23,6 +23,7 @@
     BROWSER = "firefox";
     PAGER = "less";
     LESS = "-R";
+    PKG_CONFIG_PATH = "${pkgs.gtk3}/lib/pkgconfig:$PKG_CONFIG_PATH";
   };
 
   # -*-[ Home Packages ]-*-
