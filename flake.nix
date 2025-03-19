@@ -79,9 +79,31 @@
       # DevShell
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
+          # Nix tools
           nixpkgs-fmt
           nil
+          # Web development tools.
+          nodejs
+          yarn
+          # C/C++ tools
+          clang
+          gcc
+          pkg-config
+          gnumake
+          cmake
+          ninja
+          glib
+          # GTK & Graphics
+          gtk3
+          glfw
+          glew
+          glm
+          # Java.
+          zulu23
         ];
+        shellHook = ''
+          exec ${pkgs.zsh}/bin/zsh
+        '';
       };
 
       # NixFormatter
