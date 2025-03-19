@@ -10,105 +10,57 @@ in
     programs.firefox = {
       enable = true;
 
-      # Balance privacy and functionality
       profiles.${username} = {
-        # Essential extensions
+        # Essential extensions only
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           darkreader
         ];
 
         settings = {
-          # Set default coustom fonts
+          # Font configuration
           "font.default.x-western" = "sans-serif";
           "font.name.serif.x-western" = "Source Serif Pro";
           "font.name.sans-serif.x-western" = "Inter";
           "font.name.monospace.x-western" = "Fira Code";
 
-          # Enable screenshot functionality
-          "extensions.screenshots.disabled" = false;
-          "screenshots.browser.component.enabled" = true;
-
-          # Enable context menu for screenshots
-          "screenshots.browser.action.disabled" = false;
-
-          # Keyboard shortcut
-          "devtools.screenshot.clipboard.enabled" = true;
-          "devtools.screenshot.audio.enabled" = true;
-
-          # Basic privacy settings - less aggressive
+          # Core privacy settings
           "browser.send_pings" = false;
-          "browser.urlbar.speculativeConnect.enabled" = true;
-          "dom.event.clipboardevents.enabled" = true;
-          "media.navigator.enabled" = true;
           "network.cookie.cookieBehavior" = 3;
           "network.http.referer.XOriginPolicy" = 1;
-          "network.http.referer.XOriginTrimmingPolicy" = 2;
-          "beacon.enabled" = true;
-          "browser.safebrowsing.downloads.remote.enabled" = true;
-          "network.IDN_show_punycode" = true;
-          "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-          "app.shield.optoutstudies.enabled" = false;
           "dom.security.https_only_mode_ever_enabled" = true;
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "browser.toolbars.bookmarks.visibility" = "always";
           "geo.enabled" = false;
 
-          # Balanced telemetry approach
-          "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-          "browser.ping-centre.telemetry" = false;
-          "browser.tabs.crashReporting.sendReport" = true;
-          "devtools.onboarding.telemetry.logged" = false;
+          # Disable telemetry
           "toolkit.telemetry.enabled" = false;
           "toolkit.telemetry.unified" = false;
           "toolkit.telemetry.server" = "";
 
-          # Pocket settings (less restrictive)
-          "browser.newtabpage.activity-stream.feeds.discoverystreamfeed" = false;
-          "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-          "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
-          "browser.newtabpage.activity-stream.showSponsored" = false;
+          # Disable Pocket
           "extensions.pocket.enabled" = false;
 
-          # Enable prefetching for better performance
-          "network.dns.disablePrefetch" = false;
-          "network.prefetch-next" = true;
-
-          # PDF settings
-          "pdfjs.enableScripting" = true;
-
-          # SSL settings
-          "security.ssl.require_safe_negotiation" = true;
-
-          # Usability improvements
-          "identity.fxaccounts.enabled" = true;
-          "browser.search.suggest.enabled" = true;
-          "browser.urlbar.shortcuts.bookmarks" = true;
-          "browser.urlbar.suggest.bookmark" = true;
-          "browser.urlbar.shortcuts.history" = true;
-          "browser.urlbar.shortcuts.tabs" = true;
-          "browser.urlbar.suggest.engines" = true;
-          "browser.urlbar.suggest.history" = true;
-          "browser.urlbar.suggest.openpage" = true;
-          "browser.urlbar.suggest.topsites" = true;
-          "browser.uidensity" = 1;
-          "media.autoplay.enabled" = false;
-          "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2,1.5,2.0";
-          "privacy.firstparty.isolate" = false;
-          "network.http.sendRefererHeader" = 2;
-
-          # Performance improvements
+          # Performance settings
           "browser.cache.disk.enable" = true;
           "browser.cache.memory.enable" = true;
-          "browser.cache.memory.capacity" = 524288;
-          "browser.sessionstore.interval" = 60000;
 
-          # Media and DRM (needed for streaming services)
+          # Media and DRM (for streaming services)
           "media.eme.enabled" = true;
           "media.gmp-widevinecdm.enabled" = true;
+
+          # UI preferences
+          "browser.uidensity" = 1;
+          "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "browser.toolbars.bookmarks.visibility" = "always";
+
+          # Usability settings
+          "browser.search.suggest.enabled" = true;
+          "browser.urlbar.suggest.bookmark" = true;
+          "browser.urlbar.suggest.history" = true;
+          "media.autoplay.enabled" = false;
         };
 
-        # userChome.css remains the same
+        # UserChrome CSS for consistent theming
         userChrome = "
           * { 
               box-shadow: none !important;
