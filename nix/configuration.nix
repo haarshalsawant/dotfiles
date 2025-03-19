@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   imports = [
@@ -10,30 +10,39 @@
 
   # -*-[ Bootloader Configuration ]-*-
   boot.loader = {
-    systemd-boot.enable = true; # Enable systemd-boot (UEFI boot manager)
-    efi.canTouchEfiVariables = true; # Allow modifying EFI variables (needed for UEFI booting)
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 
-  # -*-[ Automount ]-*-
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
+  # Hardware acceleration for video rendering
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 
   # -*-[ GPG ]-*-
   # Some programs need SUID wrappers, can be configured further or are
   # programs.mtr.enable = true;
   programs.gnupg.agent.enable = true;
-  programs.gnupg.agent.enableSSHSupport = true;
+  programs.gnupg.agent.enableSSHSupport = false;
 
   # -*-[ SSH ]-*-
-  services.sshd.enable = true;
-  # Enable incoming ssh
-  services.openssh.enable = true;
-  services.openssh.openFirewall = true;
-  services.openssh.settings.PasswordAuthentication = false;
-  services.openssh.settings.PermitRootLogin = "no";
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      X11Forwarding = true;
+      AllowUsers = [ "${username}" ];
+    };
+  };
 
   # -*-[ Systemd logs ]-*-
-  services.journald.extraConfig = "SystemMaxUse=100M\nSystemMaxFiles=5";
-  services.journald.rateLimitBurst = 1000;
-  services.journald.rateLimitInterval = "30s";
+  services.journald = {
+    extraConfig = ''
+      SystemMaxUse=500M
+      SystemMaxFiles=10
+    '';
+    rateLimitBurst = 2000;
+    rateLimitInterval = "60s";
+  };
 }
