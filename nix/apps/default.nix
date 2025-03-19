@@ -30,10 +30,6 @@
   nix.settings.substituters = [ "https://cache.nixos.org" ];
   nix.settings.trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431Cz7knE28jzE3KFW4c9fPyNn6zhG3QHw=" ];
 
-  environment.sessionVariables = {
-    PKG_CONFIG_PATH = "/run/current-system/sw/lib/pkgconfig:$PKG_CONFIG_PATH";
-  };
-
   environment.systemPackages = with pkgs; [
     # Notion fix patch
     (pkgs.callPackage ./notion-app-enhanced { })
