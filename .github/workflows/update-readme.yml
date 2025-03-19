@@ -36,7 +36,7 @@ jobs:
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update README structure"
+          commit_message: "upd: README structure"
           branch: main
           file_pattern: README.md
           commit_user_name: "Readme Bot"
