@@ -107,6 +107,7 @@
 
     # Environment setup
     envExtra = ''
+      export PATH="$HOME/.npm-global/bin:$PATH"
       export BAT_THEME="Catppuccin-mocha"
       export MANPAGER="nvim +Man!"
     '';
