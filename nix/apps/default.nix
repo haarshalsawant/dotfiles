@@ -72,6 +72,8 @@
     glfw
     glew
     glm
+    sfml
+    vcpkg
   ];
 }
 
