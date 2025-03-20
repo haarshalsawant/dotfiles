@@ -40,7 +40,7 @@
     discord
     telegram-desktop
     github-desktop
-    vscodium
+    vscode-fhs
     slack
     zoom-us
     anydesk
