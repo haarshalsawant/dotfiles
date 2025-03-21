@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
+  # ZSH configuration  
   programs.zsh = {
     enable = true;
 
@@ -107,7 +108,9 @@
 
     # Environment setup
     envExtra = ''
+      # NPM global
       export PATH="$HOME/.npm-global/bin:$PATH"
+
       export BAT_THEME="Catppuccin-mocha"
       export MANPAGER="nvim +Man!"
     '';

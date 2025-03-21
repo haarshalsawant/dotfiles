@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./android.nix
     ./devtools
     ./printing.nix
   ];
@@ -53,22 +54,23 @@
     postman
 
     # Networking tools.
-    metasploit # msfconsole 
+    metasploit # msfconsole
     nmap
 
     # Java.
     zulu23
+    gradle
+    maven
 
-    # Development tools.
-    nodejs
-    yarn
-    (with nodePackages; [
-      typescript
-      node2nix
-      typescript-language-server
-      vscode-langservers-extracted
-      prettier
-    ])
+    # -*- Development tools -*-
+    # Node tools
+    nodePackages.nodejs
+    nodePackages.node2nix
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.prettier
+    nodePackages.eslint
 
     # C/C++ tools
     clang

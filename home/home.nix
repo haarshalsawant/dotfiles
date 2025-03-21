@@ -43,17 +43,13 @@
     fuse
     dos2unix
     zoxide
-    android-tools # Android
     appimage-run
-    universal-android-debloater # uad-ng
     wine # Windows
     ventoy
     shc # Shell compiler
     nh # Nix Garbage Cleaner
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    age
-    gnupg
 
     # Editors & Viewers
     eza # ls
