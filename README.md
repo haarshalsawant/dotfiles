@@ -25,13 +25,11 @@
 │   │   ├── default.nix
 │   │   ├── devtools
 │   │   ├── notion-app-enhanced
-│   │   └── printing.nix
+│   │   ├── printing.nix
+│   │   └── vm.nix
 │   ├── configuration.nix
 │   ├── hardware.nix
-│   ├── tweaks
-│   │   ├── default.nix
-│   │   ├── kernel.nix
-│   │   └── tlp.nix
+│   ├── optimization.nix
 │   └── user
 │       ├── audio.nix
 │       ├── default.nix
