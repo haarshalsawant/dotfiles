@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
     ./android.nix
     ./devtools
-    # ./printing.nix
-    # ./vm.nix
+    ./printing.nix
+    # ./virtual.nix
   ];
 
   # System configuration
@@ -19,32 +19,22 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
-      max-jobs = "auto";
-      cores = 0;
-      # Cache configuration
-      substituters = [
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431Cz7knE28jzE3KFW4c9fPyNn6zhG3QHw="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
+      max-jobs = lib.mkDefault 8;
+      cores = lib.mkDefault 4;
     };
     # Garbage collection
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 1d";
     };
   };
 
   # Enable flatpak support
   # services.flatpak.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal ];
-  };
+
+  # SDK license acceptance
+  nixpkgs.config.android_sdk.accept_license = true;
 
   # Development environment packages
   environment.systemPackages =
@@ -88,6 +78,14 @@
         glm
         sfml
 
+        # GTK development tools
+        gtk3
+        gtk4
+        gobject-introspection
+        pkg-config
+        gtkmm4 # C++ bindings for GTK4
+        gtkmm3 # C++ bindings for GTK3
+
         # API Development
         postman
       ];
@@ -117,6 +115,12 @@
         wireshark
         tcpdump
       ];
+
+      androidTools = with pkgs; [
+        android-studio
+        flutter
+        android-tools
+      ];
     in
-    devTools ++ communicationApps ++ desktopApps ++ networkingTools;
+    devTools ++ communicationApps ++ desktopApps ++ networkingTools ++ androidTools;
 }
