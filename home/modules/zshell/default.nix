@@ -107,7 +107,6 @@
 
     # Environment setup
     envExtra = ''
-      export BAT_THEME="Catppuccin-mocha"
       export MANPAGER="nvim +Man!"
     '';
 
