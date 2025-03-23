@@ -3,7 +3,7 @@
 {
   imports = [
     ./apps
-    ./user
+    ./c0d3h01
     ./hardware.nix
     ./optimization.nix
   ];
