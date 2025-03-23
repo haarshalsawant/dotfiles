@@ -8,33 +8,8 @@
     # ./virtual.nix
   ];
 
-  # System configuration
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
-  nix = {
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
-      max-jobs = lib.mkDefault 8;
-      cores = lib.mkDefault 4;
-    };
-    # Garbage collection
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 1d";
-    };
-  };
-
   # Enable flatpak support
   # services.flatpak.enable = true;
-
-  # SDK license acceptance
-  nixpkgs.config.android_sdk.accept_license = true;
 
   # Development environment packages
   environment.systemPackages =
@@ -119,7 +94,6 @@
       androidTools = with pkgs; [
         android-studio
         flutter
-        android-tools
       ];
     in
     devTools ++ communicationApps ++ desktopApps ++ networkingTools ++ androidTools;

@@ -36,6 +36,6 @@
     '';
   };
 
-  # Disable waiting for network to be online at boot
+  # Disable waiting for network to be online
   systemd.network.wait-online.enable = false;
 }

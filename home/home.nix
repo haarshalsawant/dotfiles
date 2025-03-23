@@ -26,7 +26,9 @@
     LESS = "-R";
   };
 
-  home.sessionPath = [ "$HOME/.npm-global/bin" ];
+  home.sessionPath = [
+    "$HOME/.npm-global/bin"
+  ];
 
   # -*-[ Home Packages ]-*-
   home.packages = with pkgs; [

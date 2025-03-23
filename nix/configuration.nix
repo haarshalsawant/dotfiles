@@ -1,4 +1,4 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, lib, username, ... }:
 
 {
   imports = [
@@ -8,17 +8,43 @@
     ./optimization.nix
   ];
 
+  # Nix System configuration
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+      max-jobs = lib.mkDefault 8;
+      cores = lib.mkDefault 4;
+    };
+    # Garbage collection
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 1d";
+    };
+  };
+
   # -*-[ Bootloader Configuration ]-*-
   boot = {
     tmp.cleanOnBoot = true;
+    kernelPackages = pkgs.linuxPackages_zen;
     loader = {
-      systemd-boot.enable = true;
+      # systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
       efi.canTouchEfiVariables = true;
     };
   };
-  
-  # Zen kernel for better performance
-  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Hardware acceleration for video rendering
   hardware.graphics = {
