@@ -8,7 +8,6 @@
 
     settings = {
       # Font configuration
-      font_family = "FiraCodeRoman-Regular";
       font_size = "13.0";
       adjust_line_height = "110%";
 
