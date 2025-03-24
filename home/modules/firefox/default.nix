@@ -15,17 +15,11 @@ in
         # Essential extensions only
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          darkreader
+          privacy-badger
+          link-cleaner
         ];
 
         settings = {
-          # Font configuration
-          "font.default.x-western" = "sans-serif";
-          "font.name.serif.x-western" = "Source Serif Pro";
-          "font.name.sans-serif.x-western" = "Inter";
-          "font.name.monospace.x-western" = "Fira Code";
-          "font.name-list.emoji" = "Twitter Color Emoji";
-
           # Core privacy settings
           "browser.send_pings" = false;
           "network.cookie.cookieBehavior" = 1;
