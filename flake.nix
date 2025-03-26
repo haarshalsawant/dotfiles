@@ -2,32 +2,32 @@
   description = "c0d3h01 dotfiles";
 
   inputs = {
-    # Package sources
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-
-    # Secret Manager 
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # NUR (Nix User Repository)
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = { self, nixpkgs, nixpkgs-stable, agenix, home-manager, nur, ... }:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-stable
+    , agenix
+    , home-manager
+    , nur
+    , ...
+    }@inputs:
     let
-      # System architecture, user configurations
+      # System, User configurations
       system = "x86_64-linux";
       username = "c0d3h01";
       hostname = "NixOS"; # nixos-rebuild --flake .#NewHostName!
@@ -60,7 +60,7 @@
         inherit system specialArgs;
         modules = [
           # -*-[ System configurations, modules ]-*-
-          ./nix/configuration.nix
+          ./nix
           ./secrets.nix
           ({ config, ... }: {
             system.stateVersion = "24.11";
