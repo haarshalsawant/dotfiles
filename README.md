@@ -40,8 +40,5 @@
 │   ├── install.sh
 │   ├── npm.sh
 │   └── secrets.sh
-├── secrets
-│   ├── recipients.txt
-│   └── wifi-password.age
 └── secrets.nix
 ```
