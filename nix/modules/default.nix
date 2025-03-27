@@ -3,5 +3,6 @@
     ./boot.nix
     ./config.nix
     ./nix-settings.nix
+    ./services.nix
   ];
 }
