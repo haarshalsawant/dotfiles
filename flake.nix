@@ -25,7 +25,7 @@
     , home-manager
     , nur
     , ...
-    }:
+    }@inputs:
     let
       # System, User configurations
       system = "x86_64-linux";
