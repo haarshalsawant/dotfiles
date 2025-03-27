@@ -4,14 +4,11 @@
 , ...
 }:
 {
-  imports = [
-    ./devtools
-    ./printing.nix
-    ./virtual.nix
-  ];
+  imports = [ ./devtools ];
 
-  # Enable flatpak support
-  # services.flatpak.enable = true;
+  services = {
+    flatpak.enable = false;
+  };
 
   # Development environment packages
   environment.systemPackages =

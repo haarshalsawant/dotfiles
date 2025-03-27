@@ -34,6 +34,7 @@
     systemPackages = with pkgs; [
       gnome-photos
       gnome-tweaks
+      gnome-boxes
       evolutionWithPlugins
       micro
       libreoffice

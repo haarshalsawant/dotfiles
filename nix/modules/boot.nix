@@ -2,11 +2,10 @@
 , pkgs
 , ...
 }:
-
 {
   boot = {
     tmp.cleanOnBoot = true;
-    consoleLogLevel = 0;
+    consoleLogLevel = 3;
     initrd = {
       verbose = false;
     };
@@ -62,7 +61,7 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
-        useOSProber = false;
+        useOSProber = true;
       };
     };
   };

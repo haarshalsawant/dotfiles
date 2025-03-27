@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  androidenv = pkgs.androidenv;
+  androidenv = pkgs.androidenv.override { licenseAccepted = true; };
   androidSdk = (androidenv.composeAndroidPackages {
     cmdLineToolsVersion = "8.0";
     platformToolsVersion = "35.0.2";
@@ -15,6 +15,9 @@ let
     includeSystemImages = false;
     includeNDK = true;
     ndkVersions = [ "22.0.7026061" ];
+    extraLicenses = [
+      "android-sdk-license"
+    ];
   }).androidsdk;
 in
 {
