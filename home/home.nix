@@ -73,6 +73,14 @@
 
       # Diffing
       diff-so-fancy
+
+      # Extractors
+      unzip
+      unrar
+      p7zip
+      xz
+      zstd
+      cabextract
     ];
   };
 }
