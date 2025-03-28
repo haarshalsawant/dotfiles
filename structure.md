@@ -4,6 +4,7 @@
 ├── LICENSE
 ├── README.md
 ├── assets
+│   ├── chillet.png
 │   ├── image.png
 │   └── wallpaper.png
 ├── flake.lock
