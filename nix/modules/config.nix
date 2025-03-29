@@ -4,10 +4,6 @@
 , ...
 }:
 {
-  # VirtualMachine
-  virtualisation.libvirtd.enable = true;
-  users.users.${username}.extraGroups = [ "libvirtd" ];
-
   programs = {
     gnupg.agent.enable = true;
     gnupg.agent.enableSSHSupport = false;
@@ -20,9 +16,7 @@
       openFirewall = true;
       settings = {
         PasswordAuthentication = false;
-        PermitRootLogin = "yes";
-        GatewayPorts = "yes";
-        X11Forwarding = true;
+        PermitRootLogin = "prohibit-password";
         AllowUsers = [ "${username}" ];
       };
     };
@@ -34,12 +28,6 @@
     avahi = {
       enable = true;
       openFirewall = true;
-    };
-
-    udev = {
-      extraRules = ''
-        SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
-      '';
     };
   };
 
