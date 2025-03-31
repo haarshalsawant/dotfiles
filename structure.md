@@ -44,6 +44,7 @@
 │       ├── default.nix
 │       └── nix-settings.nix
 ├── scripts
+│   ├── install.sh
 │   ├── npm.sh
 │   └── secrets.sh
 ├── secrets.nix
