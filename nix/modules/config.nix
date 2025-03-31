@@ -13,7 +13,7 @@
     # SSH support
     openssh = {
       enable = true;
-      openFirewall = true;
+      # openFirewall = true;
       settings = {
         PasswordAuthentication = false;
         PermitRootLogin = "prohibit-password";
@@ -27,13 +27,8 @@
     };
     avahi = {
       enable = true;
-      openFirewall = true;
+      # openFirewall = true;
     };
-  };
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
   };
 
   zramSwap = {
