@@ -92,6 +92,10 @@
         primary-color = "#8a0707";
         secondary-color = "#000000";
       };
+
+      "org/gnome/settings-daemon/plugins/power" = {
+        power-button-action = "poweroff";
+      };
     };
 
     gtk = {
