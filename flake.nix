@@ -5,7 +5,6 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixcord.url = "github:kaylorben/nixcord";
     stylix.url = "github:danth/stylix";
-    sops-nix.url = "github:Mic92/sops-nix";
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,10 +63,8 @@
       nixosConfigurations.${hostname} = lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./nix
-          ./secrets.nix
+          ./hosts/c0d3h01 # User Modules
           inputs.stylix.nixosModules.stylix
-          inputs.sops-nix.nixosModules.sops
 
           ({ config, ... }: {
             system.stateVersion = "24.11";
@@ -80,7 +77,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
-              users.${username} = import ./home/home.nix;
+              users.${username} = import ./home;
             };
           }
           nur.modules.nixos.default
