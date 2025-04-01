@@ -40,7 +40,7 @@
       "video"
     ];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINcq9uTCVusCJRWgHTj8u4sdvvuXfPZcinAYTbNZW+eI c0d3h01@gmail.com"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMeUqmD36Sp53CW96W3yCumTY8nt4xN1UAugJGm1AelM c0d3h01@gmail.com"
     ];
   };
 }
