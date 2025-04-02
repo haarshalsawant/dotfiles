@@ -51,7 +51,7 @@
       ];
 
       communicationApps = with pkgs; [
-        discord
+        vesktop
         telegram-desktop
         slack
         zoom-us
@@ -67,7 +67,7 @@
       ];
 
       androidTools = with pkgs; [
-        android-studio
+        unstable.android-studio
         flutter
         openjdk
         gradle

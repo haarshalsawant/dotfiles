@@ -1,6 +1,5 @@
 {
   imports = [
-    ./discord
     ./firefox
     ./git
     ./kitty
