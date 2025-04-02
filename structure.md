@@ -16,7 +16,6 @@
 │   ├── flake.nix
 │   └── modules
 │       ├── default.nix
-│       ├── discord
 │       ├── firefox
 │       ├── git
 │       ├── kitty
