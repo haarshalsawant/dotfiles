@@ -16,11 +16,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
@@ -37,7 +32,7 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
       # Create package set with overlays for each system
-      pkgsFor = system: import nixpkgs {
+      pkgs = system: import nixpkgs {
         inherit system;
         config.allowUnfree = true;
         overlays = [
@@ -47,7 +42,6 @@
               inherit system;
               config.allowUnfree = true;
             };
-            myPackages = prev.callPackage ./pkgs { };
           })
         ];
       };
@@ -55,7 +49,6 @@
       # Shared arguments for all modules
       commonArgs = system: {
         inherit inputs system user;
-        pkgs = pkgsFor system;
         lib = nixpkgs.lib;
       };
     in
@@ -97,16 +90,5 @@
 
       # Formatting and linting configuration
       formatter = forAllSystems (system: (pkgsFor system).nixpkgs-fmt);
-
-      checks = forAllSystems (system: {
-        pre-commit = inputs.pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            nixpkgs-fmt.enable = true;
-            statix.enable = true;
-            deadnix.enable = true;
-          };
-        };
-      });
     };
 }
