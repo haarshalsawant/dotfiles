@@ -1,29 +1,33 @@
-{ pkgs
-, ...
-}: {
+{ pkgs, ... }: {
 
   programs.neovim = {
     enable = true;
     viAlias = true;
     vimAlias = true;
     defaultEditor = true;
+    package = pkgs.unstable.neovim-unwrapped;
+
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
       LazyVim
       tokyonight-nvim
     ];
+
     extraLuaConfig = ''
-      -- Bootstrap LazyVim
       require("lazy").setup({
         spec = {
           { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+          { import = "lazyvim.plugins.extras" },
         },
+
         defaults = {
           lazy = true,
           version = false,
         },
+
         install = { colorscheme = { "tokyonight" } },
         checker = { enabled = true },
+        
         performance = {
           rtp = {
             disabled_plugins = {
