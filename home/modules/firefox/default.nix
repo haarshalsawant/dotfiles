@@ -18,7 +18,7 @@ in
 
       profiles.${user.username} = {
         # Essential extensions only
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           privacy-badger
           link-cleaner

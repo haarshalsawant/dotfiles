@@ -37,7 +37,6 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          inputs.nur.overlay
           (final: prev: {
             unstable = import inputs.nixpkgs-unstable {
               inherit system;
@@ -62,6 +61,8 @@
         modules = [
           ./hosts/${user.hostname}
           inputs.spicetify-nix.nixosModules.default
+          inputs.sops-nix.nixosModules.sops
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -74,6 +75,7 @@
               };
             };
           }
+          inputs.nur.modules.nixos.default
         ];
       };
 
