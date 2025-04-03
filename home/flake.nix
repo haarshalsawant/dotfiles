@@ -27,7 +27,7 @@
         inherit pkgs;
         extraSpecialArgs = specialArgs;
         modules = [
-          ./home.nix
+          ./default.nix
           ({ config, ... }: {
             nixpkgs.config.allowUnfree = true;
           })
