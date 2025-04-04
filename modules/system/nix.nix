@@ -1,4 +1,11 @@
 {
+  system.autoUpgrade = {
+    enable = true;
+    dates = "daily";
+    randomizedDelaySec = "45min";
+    allowReboot = false;
+  };
+
   nix = {
     settings = {
       auto-optimise-store = true;
