@@ -2,8 +2,7 @@
 , config
 , user
 , pkgs
-, ...
-}:
+, ... }:
 with lib;
 let
   cfg = config.modules.firefox;
@@ -15,6 +14,7 @@ in
     home.sessionVariables.MOZ_USE_XINPUT2 = "1";
     programs.firefox = lib.mkForce {
       enable = true;
+      package = pkgs.firefox-esr;
 
       profiles.${user.username} = {
         # Essential extensions only
