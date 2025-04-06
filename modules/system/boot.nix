@@ -19,9 +19,7 @@
     ];
 
     kernel.sysctl = {
-
-      # Network optimizations settings
-      "net.ipv4.tcp_congestion_control" = "bbr2";
+      # * [ Network optimizations settings ] *
 
       # buffer limits: 32M max, 16M default
       "net.core.rmem_max" = 33554432;
@@ -51,18 +49,18 @@
 
     loader = {
       efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 4;
-        consoleMode = "auto";
-        editor = false;
-      };
-      # grub = {
-      #   enable = true;
-      #   device = "nodev";
-      #   efiSupport = true;
-      #   useOSProber = false;
-      # };
+      #systemd-boot = {
+      #  enable = true;
+      #  configurationLimit = 4;
+      #  consoleMode = "auto";
+      #  editor = false;
+      #};
+       grub = {
+         enable = true;
+         device = "nodev";
+         efiSupport = true;
+         useOSProber = false;
+       };
     };
   };
 }
