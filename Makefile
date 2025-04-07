@@ -9,8 +9,6 @@ HM_PROFILE ?= $(USER)@$(TARGET)
 
 install: 
 	@echo "[*] Installing dotfiles..."
-	@echo "    [*] Installing git..."
-	nix run nixpkgs#git clone https://github.com/c0d3h01/dotfiles.git ~/dotfiles && cd ~/dotfiles
 
 	@echo "    [*] Removing old and copying new hardware config..."
 	rm hosts/c0d3h01/hardware-configuration.nix && cp /etc/nixos/hardware-configuration.nix hosts/c0d3h01/
