@@ -15,7 +15,7 @@
   # Environment packages
   environment.systemPackages =
     let
-      devTools = with pkgs.unstable; [
+      devTools = with pkgs; [
         # Editors and IDEs
         vscode-fhs
         jetbrains.webstorm
@@ -41,7 +41,7 @@
         postman
       ];
 
-      utilityApps = with pkgs.unstable; [
+      utilityApps = with pkgs; [
         # Networking tools
         metasploit
         nmap
@@ -55,6 +55,7 @@
         telegram-desktop
         slack
         zoom-us
+        element-desktop
       ];
 
       desktopApps = with pkgs; [
@@ -65,7 +66,7 @@
         github-desktop
       ];
 
-      androidTools = with pkgs.unstable; [
+      androidTools = with pkgs; [
         android-studio
         flutter
         openjdk
