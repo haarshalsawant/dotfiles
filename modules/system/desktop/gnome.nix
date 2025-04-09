@@ -45,7 +45,7 @@
       gnome-system-monitor
     ];
 
-    systemPackages = with pkgs.unstable; [
+    systemPackages = with pkgs; [
       gnome-photos
       gnome-tweaks
       micro
@@ -99,6 +99,11 @@
       "org/gnome/settings-daemon/plugins/color" = {
         night-light-enabled = true;
         night-light-temperature = 4000;
+      };
+      # keyboard
+      "org/gnome/desktop/peripherals/keyboard" = {
+        numlock-state = true;
+        remember-numlock-state = true;
       };
       # touchpad
       "org/gnome/desktop/peripherals/touchpad" = {
