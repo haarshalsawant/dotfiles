@@ -7,15 +7,6 @@
   # build takes forever
   documentation.nixos.enable = false;
 
-  # nixpkgs = {
-  #   config = lib.mkDefault {
-  #     allowUnfree = true;
-  #     allowBroken = true;
-  #     tarball-ttl = 0;
-  #     android_sdk.accept_license = true;
-  #   };
-  # };
-
   powerManagement.cpuFreqGovernor = "schedutil";
 
   system.autoUpgrade = {
