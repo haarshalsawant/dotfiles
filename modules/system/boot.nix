@@ -10,35 +10,13 @@
     initrd = {
       verbose = false;
       systemd.enable = true;
-      availableKernelModules = [
-        "xhci_pci"
-        "ahci"
-        "nvme"
-        "usbhid"
-        "sd_mod"
-        "sr_mod"
-      ];
-      kernelModules = [ ];
     };
 
     kernelParams = [
       "preempt=full"
       "mitigations=off"
-      "nowatchdog"
-      "nmi_watchdog=0"
-      "loglevel=3"
       "quiet"
-      "splash"
-      "page_alloc.shuffle=1"
-      "randomize_kstack_offset=on"
-      "slab_nomerge"
-      "pti=on"
-      "iommu=pt"
-      "amd_iommu=on"
-      "pcie_aspm=performance"
       "udev.log_level=3"
-      "systemd.show_status=auto"
-      "rd.udev.log_level=3"
     ];
 
     kernel.sysctl = {
