@@ -18,8 +18,6 @@
       devTools = with pkgs; [
         # Editors and IDEs
         vscode-fhs
-        jetbrains.webstorm
-        code-cursor
 
         # JavaScript/TypeScript
         nodejs

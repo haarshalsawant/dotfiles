@@ -1,10 +1,5 @@
 {
   security.rtkit.enable = true;
-  hardware.bluetooth = {
-    enable = true;
-    settings.General.Experimental = true;
-  };
-
   services = {
     pulseaudio.enable = false;
     pipewire = {
@@ -13,7 +8,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-      # media-session.enable = true;
     };
   };
 }

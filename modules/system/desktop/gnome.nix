@@ -54,7 +54,6 @@
       transmission_4-gtk
       gnomeExtensions.gsconnect
       gnomeExtensions.dash-to-dock
-      gnomeExtensions.blur-my-shell
       gnomeExtensions.just-perfection
     ];
 
@@ -71,7 +70,6 @@
         enabled-extensions = [
           "gsconnect@andyholmes.github.io"
           "dash-to-dock@micxgx.gmail.com"
-          "blur-my-shell@aunetx"
           "just-perfection-desktop@just-perfection"
         ];
       };

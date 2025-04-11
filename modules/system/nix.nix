@@ -14,14 +14,12 @@
       auto-optimise-store = true;
       max-jobs = "auto";
       cores = 0; # Use all available cores
-      builders = lib.mkForce "";
       trusted-users = [ "root" "${user.username}" ];
 
       experimental-features = [
         "nix-command"
         "flakes"
         "ca-derivations"
-        "dynamic-derivations"
       ];
 
       substituters = [

@@ -39,7 +39,7 @@
     ];
     # passwordFile = config.age.secrets.passwordFile;
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPMHEDTYxp5o3ZLpEg4fWjXZ/MctVco8R9qYVfE0tIn+ c0d3h01@gmail.com"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYgWFz+XI6zQvE23I9ZOvewv8ybkbjgVwoA/8rmocsE haarshalsawant@gmail.com"
     ];
   };
 }

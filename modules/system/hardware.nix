@@ -10,9 +10,4 @@
     algorithm = "zstd";
     memoryPercent = 100;
   };
-
-  hardware = {
-    cpu.amd.updateMicrocode = true;
-    enableRedistributableFirmware = true;
-  };
 }
