@@ -1,6 +1,6 @@
 { config
 , pkgs
-, user
+, userConfig
 , lib
 , ...
 }:
@@ -63,7 +63,7 @@
     ];
   };
 
-  home-manager.users.${user.username} = { pkgs, ... }: {
+  home-manager.users.${userConfig.username} = { pkgs, ... }: {
     dconf.settings = {
       "org/gnome/shell" = {
         disable-user-extensions = false;
@@ -116,13 +116,13 @@
       };
       # wallpaper
       "org/gnome/desktop/background" = {
-        picture-uri = "file://${config.users.users.${user.username}.home}/dotfiles/assets/wallpapers/image1.png";
-        picture-uri-dark = "file://${config.users.users.${user.username}.home}/dotfiles/assets/wallpapers/image1.png";
+        picture-uri = "file://${config.users.users.${userConfig.username}.home}/dotfiles/assets/wallpapers/image1.png";
+        picture-uri-dark = "file://${config.users.users.${userConfig.username}.home}/dotfiles/assets/wallpapers/image1.png";
         picture-options = "zoom";
       };
       # screensaver
       "org/gnome/desktop/screensaver" = {
-        picture-uri = "file://${config.users.users.${user.username}.home}/dotfiles/assets/wallpapers/image1.png";
+        picture-uri = "file://${config.users.users.${userConfig.username}.home}/dotfiles/assets/wallpapers/image1.png";
         picture-options = "zoom";
         primary-color = "#8a0707";
         secondary-color = "#000000";

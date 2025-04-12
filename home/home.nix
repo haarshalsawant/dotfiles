@@ -1,15 +1,16 @@
 { pkgs
-, user
-, ...
-}: {
+, userConfig
+, inputs
+, ... }: {
 
   imports = [ ./modules ];
 
   modules.firefox.enable = true;
+
   home = {
-    username = "${user.username}";
-    homeDirectory = "/home/${user.username}";
-    stateVersion = "${user.stateVersion}";
+    username = "${userConfig.username}";
+    homeDirectory = "/home/${userConfig.username}";
+    stateVersion = "${userConfig.stateVersion}";
 
     sessionVariables = {
       EDITOR = "nvim";
@@ -45,7 +46,6 @@
 
       # Editors & Viewers
       fd # find
-      dust # Disk usage visualization
       file
 
       # Nix Tools
@@ -58,9 +58,6 @@
       # System Monitoring
       inxi
       procs
-
-      # Diffing
-      diff-so-fancy
 
       # Extractors
       unzip

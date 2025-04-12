@@ -1,9 +1,9 @@
 { pkgs
-, user
+, userConfig
 , ...
 }:
 {
-  users.users.${user.username}.extraGroups = [ "docker" ];
+  users.users.${userConfig.username}.extraGroups = [ "docker" ];
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;

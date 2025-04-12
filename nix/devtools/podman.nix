@@ -1,9 +1,9 @@
 { pkgs
-, user
+, userConfig
 , ...
 }:
 {
-  users.users.${user.username}.extraGroups = [ "podman" ];
+  users.users.${userConfig.username}.extraGroups = [ "podman" ];
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;

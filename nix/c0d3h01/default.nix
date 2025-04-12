@@ -1,10 +1,6 @@
-{ pkgs
-, user
-, ...
-}: {
+{ pkgs, userConfig, ... }: {
 
   imports = [
-    ../../modules
     ../../secrets
     ./hardware-configuration.nix
   ];
@@ -25,12 +21,12 @@
     };
   };
 
-  users.users.${user.username} = {
-    description = "${user.fullName}";
+  users.users.${userConfig.username} = {
+    description = "${userConfig.fullName}";
     isNormalUser = true;
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
-    home = "/home/${user.username}";
+    home = "/home/${userConfig.username}";
     extraGroups = [
       "networkmanager"
       "wheel"

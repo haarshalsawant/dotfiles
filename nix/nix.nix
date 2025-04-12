@@ -1,5 +1,5 @@
 { config
-, user
+, userConfig
 , lib
 , ...
 }: {
@@ -14,7 +14,7 @@
       auto-optimise-store = true;
       max-jobs = "auto";
       cores = 0; # Use all available cores
-      trusted-users = [ "root" "${user.username}" ];
+      trusted-users = [ "root" "${userConfig.username}" ];
 
       experimental-features = [
         "nix-command"

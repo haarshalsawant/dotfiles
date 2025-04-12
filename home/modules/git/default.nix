@@ -1,4 +1,4 @@
-{ user
+{ userConfig
 , pkgs
 , ...
 }:
@@ -11,12 +11,11 @@
 
     git = {
       enable = true;
-
       lfs.enable = true;
 
       # User Configurations
-      userName = "${user.username}";
-      userEmail = "${user.email}";
+      userName = "${userConfig.username}";
+      userEmail = "${userConfig.email}";
 
       # Git Configuations
       extraConfig = {

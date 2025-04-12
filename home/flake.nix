@@ -26,7 +26,7 @@
         overlays = [ nur.overlays.default ];
       };
 
-      user = {
+      userConfig = {
         fullName = "Harshal Sawant";
         username = "c0d3h01";
         stateVersion = "24.11";
@@ -35,7 +35,7 @@
       };
     in
     {
-      homeConfigurations.${user.username} = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.${userConfig.username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit user inputs; };
         modules = [

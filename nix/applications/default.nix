@@ -1,13 +1,11 @@
 { pkgs, ... }: {
 
-  imports = [ ../development ];
-
   # Flatpak apps support
   # services.flatpak.enable = true;
 
   # VirtualMachine
   # virtualisation.libvirtd.enable = true;
-  # users.users.${user.username}.extraGroups = [ "libvirtd" ];
+  # users.users.${userConfig.username}.extraGroups = [ "libvirtd" ];
 
   # Allow running dynamically linked binaries
   programs.nix-ld.enable = true;
@@ -55,7 +53,6 @@
       ];
 
       desktopApps = with pkgs; [
-        # Custom patched Notion
         (pkgs.callPackage ./notion-app-enhanced { })
         spotify
         anydesk
