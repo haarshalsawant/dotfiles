@@ -23,7 +23,6 @@
         nodejs
 
         # C/C++
-        gcc
         gdb
         clang
         gnumake
@@ -64,7 +63,6 @@
       ];
 
       androidTools = with pkgs; [
-        android-studio
         flutter
         openjdk
         android-tools
