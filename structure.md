@@ -17,6 +17,7 @@
 │   ├── home.nix
 │   └── modules
 │       ├── default.nix
+│       ├── fastfetch
 │       ├── firefox
 │       ├── git
 │       ├── kitty
