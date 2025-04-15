@@ -23,6 +23,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,10 +72,10 @@
         import nixpkgs {
           inherit system;
           config = {
-           allowUnfree = true;
-           tarball-ttl = 0;
-           android_sdk.accept_license = true;
-         };
+            allowUnfree = true;
+            tarball-ttl = 0;
+            android_sdk.accept_license = true;
+          };
         };
 
       # NixOS Configuration

@@ -1,13 +1,10 @@
+{ lib, ... }:
+
 {
-  lib,
-  ...
-}:
-{
-  programs.kitty = lib.mkForce {
+  programs.kitty = {
     enable = true;
 
-    # Modern, minimal, soft dark theme configuration
-    themeFile = "Catppuccin-Mocha";
+    themeFile = "Dracula";
     settings = {
       # Font configuration
       font_size = "13.0";
@@ -25,6 +22,7 @@
 
       # Cursor settings
       cursor_shape = "beam";
+      cursor_blink = "yes";
       cursor_blink_interval = "0.5";
 
       # Mouse behavior
@@ -41,6 +39,10 @@
       tab_powerline_style = "slanted";
       active_tab_font_style = "bold";
     };
+
+    extraConfig = ''
+      cursor_trail 1
+    '';
 
     # Key mappings for common operations
     keybindings = {
