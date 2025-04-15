@@ -11,7 +11,12 @@
   # Allow running dynamically linked binaries
   programs.nix-ld.enable = true;
 
+<<<<<<< HEAD
   # Firefox install
+||||||| parent of f37b5ed (fix: enable firefox program in default.nix)
+  programs.firefox.enable
+=======
+>>>>>>> f37b5ed (fix: enable firefox program in default.nix)
   programs.firefox.enable = true;
 
   # Environment packages
