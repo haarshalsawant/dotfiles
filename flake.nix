@@ -10,14 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -91,7 +83,6 @@
           modules = [
             ./system
             { nixpkgs.pkgs = mkPkgs system; }
-            (import ./overlays)
 
             # Home Manager integration
             home-manager.nixosModules.home-manager
