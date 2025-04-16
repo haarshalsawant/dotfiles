@@ -11,6 +11,7 @@
 
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
   # For Electron apps to use wayland
@@ -20,7 +21,6 @@
     settings = {
       warn-dirty = false;
       show-trace = true;
-      allow-import-from-derivation = false;
       keep-going = true;
       auto-optimise-store = true;
       max-jobs = "auto";
