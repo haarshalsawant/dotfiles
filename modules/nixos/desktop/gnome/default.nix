@@ -5,7 +5,6 @@
   ...
 }:
 {
-
   # Enable X server and GNOME
   services = {
     xserver = {
@@ -26,6 +25,8 @@
         }
     });
   '';
+
+  services.power-profiles-daemon.enable = false;
 
   # Exclude unwanted GNOME packages
   environment = {
