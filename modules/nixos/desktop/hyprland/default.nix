@@ -1,8 +1,7 @@
 {
   config,
   pkgs,
-  lib,
-  userConfig,
+  inputs,
   ...
 }:
 let
@@ -14,139 +13,163 @@ let
   );
 in
 {
-  ###### Hyprland Base Programs ######
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+  environment = {
+    # For Electron apps to use wayland
+    sessionVariables.NIXOS_OZONE_WL = "1";
+    systemPackages =
+      (with pkgs; [
+        # System Packages
+        bc
+        baobab
+        cpufrequtils
+        duf
+        findutils
+        ffmpeg
+        glib # for gsettings to work
+        gsettings-qt
+        killall
+        libappindicator
+        libnotify
+        pciutils
+        xdg-user-dirs
+        xdg-utils
+        (mpv.override { scripts = [ mpvScripts.mpris ]; }) # with tray
+        #ranger
+        # Hyprland Stuff
+        ags # desktop overview
+        brightnessctl # for brightness control
+        cava
+        cliphist
+        loupe
+        grim
+        hypridle
+        imagemagick
+        jq
+        networkmanagerapplet
+        nwg-displays
+        nwg-look
+        nvtopPackages.full
+        pamixer
+        pavucontrol
+        gpu-screen-recorder-gtk
+        playerctl
+        polkit_gnome
+        libsForQt5.qt5ct
+        kdePackages.qt6ct
+        kdePackages.qtwayland
+        kdePackages.qtstyleplugin-kvantum # kvantum
+        rofi-wayland
+        slurp
+        swappy
+        swaynotificationcenter
+        swww
+        wallust
+        wl-clipboard
+        wlogout
+        xarchiver
+        yad
+        yt-dlp
+      ])
+      ++ [
+        python-packages
+      ];
   };
 
-  environment.systemPackages = with pkgs; [
-    # Basics
-    killall
+  programs = {
+    uwsm.enable = true;
+    waybar.enable = true;
+    hyprlock.enable = true;
+    nm-applet.indicator = true;
+    dconf.enable = true;
+    seahorse.enable = true;
+    fuse.userAllowOther = true;
+    mtr.enable = true;
 
-    # Hyprland Ecosystem
-    hyprland
-    waybar
-    dunst
-    wofi
-    swaylock-effects
-    grim
-    slurp
-    swappy
-    swww
-    wl-clipboard
-    cliphist
-    wlogout
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      withUWSM = true;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    };
 
-    # Audio & Controls
-    pamixer
-    pavucontrol
-    brightnessctl
-    playerctl
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        exo
+        mousepad
+        thunar-archive-plugin
+        thunar-volman
+        tumbler
+      ];
+    };
+  };
 
-    # Network & Polkit
-    networkmanagerapplet
-    kdePackages.polkit-kde-agent-1
-
-    # File Management
-    xfce.thunar
-    xfce.tumbler
-
-    # Python scripts
-    python-packages
-
-    # Portals
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-  ];
-
-  ###### Wayland Portals ######
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
+
+    config = {
+      common = {
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+        "org.freedesktop.portal.FileChooser" = [ "xdg-desktop-portal-gtk" ];
+      };
+    };
   };
 
-  ###### System Services ######
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+        if (action.id.indexOf("org.freedesktop.udisks2.filesystem-mount") == 0 &&
+            subject.isInGroup("users")) {
+            return polkit.Result.YES;
+        }
+    });
+  '';
+
+  # Services to start
   services = {
-    # Login Manager (Greetd + Tuigreet)
     greetd = {
       enable = true;
       vt = 3;
-      settings.default_session = {
-        user = userConfig.username;
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+      settings = {
+        default_session = {
+          user = "c0d3h01";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        };
       };
     };
 
-    # Useful Daemons
-    dbus.enable = true;
-    gvfs.enable = true;
-    tumbler.enable = true;
-    udev.enable = true;
-    envfs.enable = true;
-    libinput.enable = true;
-    fwupd.enable = true;
-    upower.enable = true;
-    blueman.enable = true;
-    openssh.enable = true;
-    gnome.gnome-keyring.enable = true;
+    xserver = {
+      enable = true;
+      videoDrivers = [ "amdgpu" ];
+      xkb.layout = "us";
+    };
 
-    # Disable unused stuff
-    xserver.enable = false;
-    rpcbind.enable = false;
-    nfs.server.enable = false;
     smartd = {
       enable = false;
       autodetect = true;
     };
+
+    gvfs.enable = true;
+    tumbler.enable = true;
+    udev.enable = true;
+    envfs.enable = true;
+    dbus.enable = true;
+    libinput.enable = true;
+    blueman.enable = true;
+    fwupd.enable = true;
+    upower.enable = true;
+    gnome.gnome-keyring.enable = true;
   };
 
-  ###### Security & Polkit ######
-  security = {
-    pam.services.swaylock.text = ''
-      auth include login
-    '';
-    polkit = {
-      enable = true;
-      extraConfig = ''
-        polkit.addRule(function(action, subject) {
-          if (
-            subject.isInGroup("users") &&
-            (
-              action.id == "org.freedesktop.login1.reboot" ||
-              action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-              action.id == "org.freedesktop.login1.power-off" ||
-              action.id == "org.freedesktop.login1.power-off-multiple-sessions"
-            )
-          ) {
-            return polkit.Result.YES;
-          }
-        })
-      '';
-    };
-    rtkit.enable = true;
-  };
-
-  ###### AMD GPU Drivers (Optional) ######
-  services.xserver.videoDrivers = [ "amdgpu" ];
-  hardware.graphics.extraPackages = with pkgs; [
-    libva
-    libva-utils
-  ];
-
-  systemd.tmpfiles.rules = [
-    "L+ /opt/rocm/hip - - - - ${pkgs.rocmPackages.clr}"
-  ];
-
-  ###### Optional Programs ######
-  programs.dconf.enable = true;
-
-  ###### Locale / Keyboard ######
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
   };
 }
