@@ -6,7 +6,6 @@
   ...
 }:
 {
-
   # Use dconf settings for user-specific GNOME config
   dconf.settings = {
     "org/gnome/shell" = {
