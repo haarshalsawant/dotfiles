@@ -6,6 +6,12 @@
   ...
 }:
 {
+  home.packages = with pkgs; [
+    # Gnome extensions here
+    gnomeExtensions.gsconnect
+    gnomeExtensions.dash-to-dock
+  ];
+
   # Use dconf settings for user-specific GNOME config
   dconf.settings = {
     "org/gnome/shell" = {
