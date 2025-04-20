@@ -22,10 +22,6 @@ in
   system.stateVersion = userConfig.stateVersion;
   networking.hostName = userConfig.hostname;
 
-  hardware.graphics = {
-    enable = true;
-  };
-
   nix = {
     registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
 
