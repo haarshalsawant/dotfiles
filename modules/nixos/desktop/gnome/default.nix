@@ -12,7 +12,6 @@
       videoDrivers = [ "amdgpu" ];
       xkb.layout = "us";
       desktopManager.gnome.enable = true;
-      excludePackages = with pkgs; [ xterm ];
       displayManager.gdm.enable = true;
     };
   };
@@ -26,7 +25,7 @@
     });
   '';
 
-  services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = true;
 
   # Exclude unwanted GNOME packages
   environment = {
@@ -54,11 +53,7 @@
       libreoffice
       rhythmbox
       qbittorrent
-      evince # Document viewer
-
-      # Gnome extensions here
-      gnomeExtensions.gsconnect
-      gnomeExtensions.dash-to-dock
+      papers
     ];
 
     pathsToLink = [
