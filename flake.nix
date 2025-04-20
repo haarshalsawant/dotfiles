@@ -72,16 +72,25 @@
 
       overlays = import ./overlays { inherit inputs; };
 
-      # NixOS configuration
-      nixosConfigurations = {
-        ${userConfig.hostname} = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs outputs userConfig; };
-          modules = [
-            ./modules/nixos
-            ./hosts/laptop
-          ];
-        };
+      # NixOS configuration with home-manager.
+      nixosConfigurations.${userConfig.hostname} = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs outputs userConfig; };
+        modules = [
+          ./hosts/laptop # Host Modules <<-
+            home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs outputs userConfig; };
+              users.${userConfig.username} = {
+                imports = [ ./home/home.nix ];
+                home.stateVersion = userConfig.stateVersion;
+              };
+            };
+          }
+        ];
       };
 
       # Standalone home-manager configuration
@@ -91,6 +100,7 @@
           extraSpecialArgs = { inherit inputs outputs userConfig; };
           modules = [
             ./modules/home-manager/home.nix
+            { nixpkgs.config.allowUnfree = true; }
           ];
         };
       };
