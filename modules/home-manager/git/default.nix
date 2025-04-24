@@ -23,8 +23,6 @@
         color.ui = true;
         diff.algorithm = "histogram";
         merge.conflictstyle = "zdiff3";
-        credential.helper = "store";
-
         branch.autosetuprebase = "always";
         pull.rebase = "merges";
         init.defaultBranch = "main";
@@ -45,13 +43,8 @@
         };
 
         url = {
-          "ssh://aur@aur.archlinux.org/".insteadOf = "aur:";
-          "ssh://git@codeberg.org/".insteadOf = "cb:";
-          "ssh://git@gitlab.freedesktop.org/".insteadOf = "fdo:";
-          "ssh://git@github.com/".insteadOf = "gh:";
-          "ssh://git@gitlab.com/".insteadOf = "gl:";
-          "ssh://git@invent.kde.org/".insteadOf = "kde:";
-          "ssh://git@git.lix.systems/".insteadOf = "lix:";
+          "git@github.com:".insteadOf = "https://github.com/";
+          "git@gitlab.com:".insteadOf = "https://gitlab.com/";
         };
 
         # Core helpful aliases
