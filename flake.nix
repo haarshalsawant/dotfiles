@@ -6,12 +6,12 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     flake-utils.url = "github:numtide/flake-utils";
 
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -42,7 +42,7 @@
       userConfig = {
         username = "c0d3h01";
         fullName = "Harshal Sawant";
-        email = "haarshalsawant@gmail.com";
+        email = "harshalsawant.dev@gmail.com";
         hostname = "NixOS";
         stateVersion = "24.11";
       };
