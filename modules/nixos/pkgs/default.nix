@@ -18,18 +18,14 @@
   environment.systemPackages =
     let
       stablePkgs = with pkgs.stable; [
-      ];
-
-      unstablePkgs = with pkgs; [
         # Browser
-        firefox
+        firefox-esr
 
         # Notion Enhancer With patches
         (pkgs.callPackage ./notion-app-enhanced { })
 
         # Editors and IDEs
         vscode-fhs
-        code-cursor
 
         # Developement desktop apps
         postman
@@ -42,7 +38,9 @@
 
         # Common desktop apps
         anydesk
+      ];
 
+      unstablePkgs = with pkgs; [
         # -+ Common Developement tools
         nodejs
 
