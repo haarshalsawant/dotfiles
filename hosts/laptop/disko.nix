@@ -8,9 +8,9 @@
           type = "gpt";
           partitions = {
             ESP = {
-              name = "boot";
+              name = "nixos-boot";
               type = "EF00";
-              size = "500M";
+              size = "512M";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -18,8 +18,17 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
+            plainSwap = {
+              name = "nixos-swap";
+              size = "8G";
+              content = {
+                type = "swap";
+                discardPolicy = "both";
+                resumeDevice = true; # resume from hiberation from this device
+              };
+            };
             root = {
-              name = "root";
+              name = "nixos-root";
               size = "100%";
               content = {
                 type = "filesystem";
