@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, userConfig, ... }:
 
 {
   imports = [
@@ -10,19 +10,30 @@
   # services.flatpak.enable = true;
 
   # VirtualMachine
-  # virtualisation.libvirtd.enable = true;
-  # users.users.userConfig.username.extraGroups = [ "libvirtd" ];
+  virtualisation.libvirtd.enable = true;
+  users.users.${userConfig.username}.extraGroups = [ "libvirtd" ];
 
   # Allow running dynamically linked binaries
   programs.nix-ld.enable = true;
+
+  services = {
+    earlyoom = {
+      enable = true;
+      enableNotifications = true;
+      reportInterval = 0;
+      freeMemThreshold = 4;
+    };
+
+    systembus-notify.enable = true;
+  };
+  services.ananicy.enable = true;
 
   # My Custom ToolSets
   myModules = {
     # androidTools = true;
     # dockerTools = true;
-    # hackerMode = true;
-    # mysqlTools = true;
-    NotebookTools = true;
+    hackerMode = true;
+    mysqlTools = true;
     podmanTools = true;
     pythonTools = true;
     rustTools = true;
@@ -32,9 +43,6 @@
   environment.systemPackages =
     let
       stablePkgs = with pkgs.stable; [
-        # Browser
-        firefox
-
         # Notion Enhancer With patches
         (pkgs.callPackage ./notion-app-enhanced { })
 
@@ -49,12 +57,18 @@
         vesktop
         telegram-desktop
         zoom-us
+        element-desktop
 
         # Common desktop apps
         anydesk
+        drawio
+        electrum
+
+        # Game
+        zeroadPackages.zeroad-unwrapped
 
         # VirtualBox
-        qemu
+        gnome-boxes
       ];
 
       unstablePkgs = with pkgs; [
