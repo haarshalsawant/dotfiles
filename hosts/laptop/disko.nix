@@ -34,10 +34,15 @@
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
-                mountOptions = [ "noatime" ];
+                mountOptions = [
+                  "defaults"
+                  "noatime"
+                  "nodiratime"
+                  "discard"
+                ];
               };
             };
-            # # -*- BTRFS without luks -*-
+            # # -*- BTRFS -*-
             # root = {
             #   name = "nixos-root";
             #   size = "100%";
@@ -47,18 +52,23 @@
             #     subvolumes = {
             #       "/@" = {
             #         mountpoint = "/";
-            #         mountOptions = [ "compress=zstd" "noatime" "discard=async" ];
+            #         mountOptions = [
+            #           "compress=zstd:3"
+            #           "noatime"
+            #           "discard=async" ];
             #       };
             #       "/@home" = {
-            #         mountOptions = [ "compress=zstd" "noatime" ];
             #         mountpoint = "/home";
+            #         mountOptions = [
+            #           "compress=zstd:3"
+            #           "noatime" ];
             #       };
             #       "/@nix" = {
+            #         mountpoint = "/nix";
             #         mountOptions = [
-            #           "compress=zstd"
+            #           "compress=zstd:1"
             #           "noatime"
             #         ];
-            #         mountpoint = "/nix";
             #       };
             #     };
             #   };
