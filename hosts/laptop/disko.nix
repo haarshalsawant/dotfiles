@@ -18,14 +18,21 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            plainSwap = {
-              name = "nixos-swap";
-              size = "4G";
-              content = {
-                type = "swap";
-                discardPolicy = "both";
-                resumeDevice = true;
-              };
+            # plainSwap = {
+            #   name = "nixos-swap";
+            #   size = "8G";
+            #   content = {
+            #     type = "swap";
+            #     discardPolicy = "both";
+            #     resumeDevice = true;
+            #     priority = 100;
+            #   };
+            # };
+            zramSwap = {
+              enable = true;
+              priority = 100;
+              algorithm = "zstd";
+              memoryPercent = 100;
             };
             root = {
               name = "nixos-root";
