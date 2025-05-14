@@ -23,13 +23,12 @@ autoload -Uz colors && colors
 # History configuration
 HISTSIZE=20000
 SAVEHIST=20000
+HISTORY_IGNORE="(rm *|pkill *|kill *|shutdown *|reboot *|exit)"
 setopt extended_history
 setopt hist_ignore_all_dups
 setopt hist_expire_dups_first
 setopt hist_ignore_space
 setopt share_history
-# setopt hist_ignore_patterns=("rm *" "pkill *" "kill *" "shutdown *" "reboot *" "exit")
-HISTORY_IGNORE="(rm *|pkill *|kill *|shutdown *|reboot *|exit)"
 
 # Completion system
 autoload -Uz compinit
@@ -67,7 +66,7 @@ bindkey '^e' end-of-line
 alias ..='cd ..' ...='cd ../..' ....='cd ../../..' -- -='cd -'
 
 # Modern ls replacements
-alias l='eza -1 --icons --group-directories-first --color=auto'
+alias l='eza -l --icons --group-directories-first --color=auto'
 alias ls='eza --icons --group-directories-first --color=auto'
 alias ll='eza -l --git --header --classify --binary --group --time-style=long-iso --links --all --icons --group-directories-first --color=auto'
 alias la='eza -a --icons --group-directories-first --color=auto'
@@ -124,10 +123,6 @@ alias vim='nvim'
 alias ff='fastfetch'
 alias cl='clear'
 alias x='exit'
-alias h='history'
-alias j='jobs -l'
-alias c='xclip -selection clipboard'
-alias p='xclip -selection clipboard -o'
 alias ts='date '\''+%Y-%m-%d %H:%M:%S'\'
 alias reload='source ${ZDOTDIR:-$HOME}/.zshrc'
 
