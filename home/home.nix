@@ -7,6 +7,7 @@
 {
   imports = [
     ./modules
+    ./apps
   ];
 
   home = {
