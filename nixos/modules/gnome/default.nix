@@ -28,18 +28,13 @@
   environment = {
     gnome.excludePackages = with pkgs; [
       gnome-tour
-      gnome-backgrounds
       gnome-font-viewer
       epiphany
       yelp
-      geary
       baobab
-      gnome-weather
-      gnome-connections
       gnome-music
       gnome-remote-desktop
       gnome-usage
-      gnome-contacts
       gnome-system-monitor
     ];
 
@@ -48,9 +43,7 @@
       gnome-photos
       gnome-tweaks
       libreoffice
-      rhythmbox
-      qbittorrent
-      thunderbird
+      transmission_4
 
       # Gnome extensions
       gnomeExtensions.gsconnect
