@@ -5,20 +5,15 @@
     ./tools
   ];
 
-  # Flatpak apps support
-  # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  # Enable flatpak repo : flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
   # services.flatpak.enable = true;
 
-  # virtualisation.libvirtd.enable = true;
-  # users.users.${userConfig.username}.extraGroups = [ "libvirtd" ];
-
-  programs.nix-ld.enable = true;
   programs.appimage.enable = true;
+  programs.adb.enable = true;
 
-  # My Custom ToolSets
   myModules = {
     # androidTools = true;
-    dockerTools = true;
+    # dockerTools = true;
     # hackerMode = true;
     # mysqlTools = true;
     # podmanTools = true;
