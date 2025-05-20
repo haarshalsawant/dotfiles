@@ -11,11 +11,11 @@
   ];
 
   programs.home-manager.enable = true;
-  services.syncthing.enable = true;
+  # services.syncthing.enable = true;
 
   myModules = {
     androidTools = true;
-    # hackerMode = true;
+    # monitoringModules = true;
     # pythonTools = true;
     # rustTools = true;
   };
@@ -47,6 +47,8 @@
       anydesk
       drawio
       electrum
+      blender-hip
+      android-studio
 
       # Terminal
       kitty
@@ -81,6 +83,7 @@
       hub
       ruby
       xdg-utils
+      pciutils
 
       # Nix Tools
       nix-prefetch-github
