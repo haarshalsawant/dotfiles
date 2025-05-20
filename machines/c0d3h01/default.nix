@@ -41,7 +41,7 @@
       "usbmon"
     ];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOGOsLJ8MvzMo4QMjZYUhObxB565LmF+0PWf3RGClCOQ harshalsawant.dev@gmail.com"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7Sz5q/4YN3RJNe+WXXPWvNW+fEfYACYEBJQlxCQ/Bq harshalsawant.dev@gmail.com"
     ];
   };
 }

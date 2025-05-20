@@ -68,7 +68,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs outputs userConfig; };
         modules = [
-          ./hosts/c0d3h01
+          ./machines/c0d3h01
           inputs.disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           {
