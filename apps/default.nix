@@ -1,4 +1,8 @@
-{ pkgs, userConfig, ... }:
+{
+  pkgs,
+  userConfig,
+  ...
+}:
 
 {
   imports = [
@@ -6,7 +10,7 @@
   ];
 
   # Enable flatpak repo : flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  # services.flatpak.enable = true;
+  services.flatpak.enable = true;
 
   programs.appimage.enable = true;
   programs.adb.enable = true;
@@ -24,7 +28,7 @@
   # Environment packages
   environment.systemPackages =
     let
-      unstablePkgs = with pkgs; [
+      Apps = with pkgs; [
         # Browser
         firefox-esr
 
@@ -34,7 +38,6 @@
 
         # Electron tools
         electron
-        # electron-fiddle
 
         # C/C++
         gdb
@@ -51,8 +54,7 @@
         # Android Tools
         flutter
         openjdk
-        # androidsdk
       ];
     in
-    unstablePkgs;
+    Apps;
 }
