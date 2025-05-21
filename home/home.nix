@@ -7,20 +7,10 @@
 {
   imports = [
     ./modules
-    ./tools
   ];
 
   programs.home-manager.enable = true;
   # services.syncthing.enable = true;
-
-  myModules = {
-    androidTools = true;
-    # monitoringModules = true;
-    # pythonTools = true;
-    # rustTools = true;
-  };
-
-  myRDev.enable = true;
 
   home = {
     username = userConfig.username;

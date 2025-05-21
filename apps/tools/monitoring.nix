@@ -1,19 +1,23 @@
 {
   config,
-  lib,
   pkgs,
+  userConfig,
+  lib,
   ...
 }:
 
 {
-  options.myModules.monitoringModules = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-    description = "Enable monitoring tools";
+  options = {
+    myModules.monitoring.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable hacking, monitoring tools suite";
+    };
   };
 
-  config = lib.mkIf config.myModules.monitoringModules {
-    home.packages = with pkgs; [
+  config = lib.mkIf config.myModules.monitoring.enable {
+
+    environment.systemPackages = with pkgs; [
       # Recon & Scanning
       nmap
       zmap
@@ -47,7 +51,6 @@
       cewl
 
       # Packet Analysis / MITM
-      wireshark
       tshark
       ettercap
       tcpdump
@@ -66,5 +69,6 @@
       openvpn
       proxychains-ng
     ];
+    programs.wireshark.enable = true;
   };
 }

@@ -2,10 +2,11 @@
   imports = [
     ./android.nix
     ./docker.nix
-    ./hacker.nix
+    ./monitoring.nix
     ./mysql.nix
     ./podman.nix
     ./python.nix
+    ./r-dev.nix
     ./rust.nix
   ];
 }

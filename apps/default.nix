@@ -9,19 +9,20 @@
   ];
 
   # Enable flatpak repo : flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   programs.appimage.enable = true;
-  programs.adb.enable = true;
+  # programs.adb.enable = true;
 
   myModules = {
-    # androidTools = true;
-    # dockerTools = true;
-    # hackerMode = true;
-    # mysqlTools = true;
-    # podmanTools = true;
-    pythonTools = true;
-    rustTools = true;
+    androidtools.enable = true;
+    # docker.enable = true;
+    monitoring.enable = true;
+    mysql.enable = true;
+    podman.enable = true;
+    python.enable = true;
+    r.enable = true;
+    rust.enable = true;
   };
 
   # Environment packages
@@ -40,6 +41,7 @@
 
         # C/C++
         gdb
+        glib
         gcc
         clang
         gnumake
@@ -49,10 +51,6 @@
 
         # Gtk tools
         pkg-config
-
-        # Android Tools
-        flutter
-        openjdk
       ];
     in
     Apps;

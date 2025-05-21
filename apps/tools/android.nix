@@ -25,24 +25,23 @@ let
 in
 {
   options = {
-    myModules.androidTools = lib.mkOption {
+    myModules.androidtools.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Enable Android tools installation";
     };
   };
 
-  config = lib.mkIf config.myModules.androidTools {
+  config = lib.mkIf config.myModules.androidtools.enable {
     environment.systemPackages = with pkgs; [
-      androidSdk
+      flutter
+      openjdk
     ];
 
     environment.variables = {
       ANDROID_HOME = sdkRoot;
       ANDROID_SDK_ROOT = sdkRoot;
       ANDROID_NDK_ROOT = "${sdkRoot}/ndk/22.0.7026061";
-      CHROME_EXECUTABLE = "${pkgs.firefox-esr}/bin/firefox-esr";
-      JAVA_HOME = "${pkgs.openjdk}/lib/openjdk";
     };
 
     environment.shellInit = ''

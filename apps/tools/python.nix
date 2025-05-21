@@ -7,14 +7,14 @@
 
 {
   options = {
-    myModules.pythonTools = lib.mkOption {
+    myModules.python.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Install Python modules";
     };
   };
 
-  config = lib.mkIf config.myModules.pythonTools {
+  config = lib.mkIf config.myModules.python.enable {
 
     environment.systemPackages = with pkgs; [
       (pkgs.python312.withPackages (

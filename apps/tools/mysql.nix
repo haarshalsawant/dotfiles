@@ -12,14 +12,14 @@
 
 {
   options = {
-    myModules.mysqlTools = lib.mkOption {
+    myModules.mysql.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Enable MySQL tools suite";
     };
   };
 
-  config = lib.mkIf config.myModules.mysqlTools {
+  config = lib.mkIf config.myModules.mysql.enable {
 
     services.mysql = {
       enable = true;

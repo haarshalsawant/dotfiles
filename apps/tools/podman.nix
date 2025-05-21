@@ -8,14 +8,14 @@
 
 {
   options = {
-    myModules.podmanTools = lib.mkOption {
+    myModules.podman.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Install podman tools";
     };
   };
 
-  config = lib.mkIf config.myModules.podmanTools {
+  config = lib.mkIf config.myModules.podman.enable {
 
     users.users.${userConfig.username}.extraGroups = [ "podman" ];
     virtualisation.podman = {

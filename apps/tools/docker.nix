@@ -8,14 +8,14 @@
 
 {
   options = {
-    myModules.dockerTools = lib.mkOption {
+    myModules.docker.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Enable Docker tools installation";
     };
   };
 
-  config = lib.mkIf config.myModules.dockerTools {
+  config = lib.mkIf config.myModules.docker.enable {
 
     users.users.${userConfig.username}.extraGroups = [ "docker" ];
     virtualisation.docker = {
