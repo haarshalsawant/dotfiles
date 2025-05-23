@@ -15,11 +15,11 @@
   # programs.adb.enable = true;
 
   myModules = {
-    androidtools.enable = true;
+    # androidtools.enable = true;
     # docker.enable = true;
-    monitoring.enable = true;
-    mysql.enable = true;
-    podman.enable = true;
+    # monitoring.enable = true;
+    # mysql.enable = true;
+    # podman.enable = true;
     python.enable = true;
     r.enable = true;
     rust.enable = true;
