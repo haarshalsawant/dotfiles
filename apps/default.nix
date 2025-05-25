@@ -11,8 +11,13 @@
   # Enable flatpak repo : flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
   # services.flatpak.enable = true;
 
-  programs.appimage.enable = true;
-  # programs.adb.enable = true;
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+    package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [ pkgs.ffmpeg pkgs.imagemagick ];
+    };
+  };
 
   myModules = {
     # docker.enable = true;
@@ -31,26 +36,20 @@
     usbmon.enable = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    silent = true;
+    nix-direnv.enable = true;
+    loadInNixShell = true;
+    enableZshIntegration = true;
+  };
+
   # Environment packages
   environment.systemPackages =
     let
       Apps = with pkgs; [
         # Browser
         firefox
-
-        # Developement tools
-        nodejs
-        yarn
-        electron
-        gdb
-        glib
-        gcc
-        clang
-        gnumake
-        cmake
-        ninja
-        clang-tools
-        pkg-config
       ];
     in
     Apps;
