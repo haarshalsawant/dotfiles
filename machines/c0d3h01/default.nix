@@ -25,6 +25,14 @@
     };
   };
 
+  # Configure keymap in x11
+  services.xserver = {
+    enable = true;
+    xkb.layout = "us";
+    xkb.variant = "";
+    videoDrivers = [ "amdgpu" ];
+  };
+
   users.users.${userConfig.username} = {
     description = userConfig.fullName;
     isNormalUser = true;
