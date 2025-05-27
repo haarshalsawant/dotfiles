@@ -25,8 +25,8 @@
       enable = true;
       package = pkgs.mariadb;
     };
+
     environment.systemPackages = with pkgs; [
-      mariadb
       mysql-workbench
       parallel
     ];
