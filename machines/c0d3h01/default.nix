@@ -42,6 +42,13 @@
     });
   '';
 
+  # programs.zsh = {
+  #   enable = true;
+  #   shellInit = ''
+  #     source ~/.zshrc
+  #   '';
+  # };
+
   users.users.${userConfig.username} = {
     description = userConfig.fullName;
     isNormalUser = true;
