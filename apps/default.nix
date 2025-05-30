@@ -59,6 +59,5 @@
     clang-tools
     pkg-config
     jdk24
-    flutter
   ];
 }
