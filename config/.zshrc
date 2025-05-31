@@ -2,38 +2,41 @@
 
 # ===== Core Configuration =====
 export ZDOTDIR="$HOME/.config/zsh"
-export EDITOR="nvim"
-export VISUAL="nvim"
-export MANPAGER="nvim +Man!"
-export CHROME_EXECUTABLE="$(which firefox)"
-export JAVA_HOME="$(which java)"
 export NIX_USER_PROFILE_DIR=${NIX_USER_PROFILE_DIR:-/nix/var/nix/profiles/per-user/${USER}}
 export NIX_PROFILES=${NIX_PROFILES:-$HOME/.nix-profile}
 export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
 
-# Android SDK
-export ANDROID_HOME="$HOME/Android"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export PATH="$PATH:$ANDROID_HOME/emulator"
-export PATH="$HOME/Android/flutter/bin:$PATH"
+if command -v nvim >/dev/null; then
+  export EDITOR="nvim"
+  export VISUAL="nvim"
+  export MANPAGER="nvim +Man!"
+fi
+
+if command -v firefox >/dev/null; then
+  export CHROME_EXECUTABLE="$(command -v firefox)"
+fi
+
+if command -v java >/dev/null; then
+  export JAVA_HOME="$(dirname $(dirname $(readlink -f $(command -v java))))"
+fi
+
+# Android SDK Configuration
+[[ -d "$HOME/Android" ]] && export ANDROID_HOME="$HOME/Android"
+[[ -d "$ANDROID_HOME" ]] && export ANDROID_SDK_ROOT="$ANDROID_HOME"
+[[ -d "$ANDROID_HOME/cmdline-tools/latest/bin" ]] && export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+[[ -d "$ANDROID_HOME/platform-tools" ]] && export PATH="$PATH:$ANDROID_HOME/platform-tools"
+[[ -d "$ANDROID_HOME/emulator" ]] && export PATH="$PATH:$ANDROID_HOME/emulator"
+[[ -d "$HOME/Android/flutter/bin" ]] && export PATH="$HOME/Android/flutter/bin:$PATH"
 
 # ===== Path Configuration =====
-path=(
-    $HOME/.local/bin
-    $HOME/.rustup
-    $HOME/.cargo/bin
-    $HOME/go/bin
-    $HOME/.npm-global/bin
-    $HOME/bin
-    $HOME/.cabal/bin
-    $HOME/.gem/ruby/*.*.*/bin(NOn[1])
-    $path
-)
-
-typeset -U path   # unique entries only
-path=($^path(N))  # remove nonexistent paths
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+[[ -d "$HOME/.rustup" ]] && export PATH="$HOME/.rustup:$PATH"
+[[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
+[[ -d "$HOME/go/bin" ]] && export PATH="$HOME/go/bin:$PATH"
+[[ -d "$HOME/.npm-global/bin" ]] && export PATH="$HOME/.npm-global/bin:$PATH"
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
+[[ -d "$HOME/.cabal/bin" ]] && export PATH="$HOME/.cabal/bin:$PATH"
+typeset -U path
 export PATH
 
 # ===== Tool Configurations =====
@@ -249,43 +252,37 @@ make(){
   command nice -n19 make -C "${build_path:-.}" -j$(nproc) "$@"
 }
 
-if [ -n "${commands[bat]}" ]; then
-  cat() {
-    if [[ -t 1 ]] && [[ -o interactive ]]; then
-      bat "$@"
-    else
-      command cat "$@"
-    fi
-  }
-fi
+# Helper function to conditionally define command wrappers
+wrap_command() {
+  local tool="$1"
+  local fallback="$2"
+  local func_name="$3"
+  
+  if command -v "$tool" >/dev/null; then
+    eval "${func_name}() {
+      if [[ -t 1 && -o interactive ]]; then
+        $tool \"\$@\"
+      else
+        command $fallback \"\$@\"
+      fi
+    }"
+  fi
+}
 
-if [ -n "${commands[fastfetch]}" ]; then
-  ff() {
-    if [[ -t 1 ]] && [[ -o interactive ]]; then
-      fastfetch "$@"
-    else
-      command fastfetch "$@"
-    fi
-  }
-fi
+# Conditional wrappers
+wrap_command bat cat cat
+wrap_command fastfetch fastfetch ff
+wrap_command rg grep grep
 
-if [ -n "${commands[rg]}" ]; then
-  grep() {
-    if [[ -t 1 ]] && [[ -o interactive ]]; then
-      rg "$@"
-    else
-      command grep "$@"
-    fi
-  }
-fi
-
-if [ -n "${commands[direnv]}" ]; then
+# Direnv hook if available
+if command -v direnv >/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-if [[ $commands[kubectl] ]]; then
-   alias k=kubectl
-   source <(kubectl completion zsh)
+# Kubectl alias and autocompletion if available
+if command -v kubectl >/dev/null; then
+  alias k=kubectl
+  source <(kubectl completion zsh)
 fi
 
 # ===== Tool Initialization =====
@@ -295,7 +292,7 @@ command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd j)"
 # Initialize direnv (if installed)
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
-# ===== Starship Prompt ===== ( I dont use starship btw)
+# ===== Starship Prompt =====
 # command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # ===== Custom Plugin Submodules =====
