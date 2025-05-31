@@ -2,8 +2,8 @@
   description = "NixOS configuration with flakes";
 
   inputs = {
-    nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=master";
-    # nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small";
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     systems.url = "github:nix-systems/default";
 
     flake-utils.url = "github:numtide/flake-utils";
