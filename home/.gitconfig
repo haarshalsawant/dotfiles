@@ -4,9 +4,6 @@
   pager = delta
   editor = nvim
 
-[include]
-  path = ~/.gitconfig.local
-
 [interactive]
   singlekey = true
   diffFilter = delta --color-only
@@ -26,8 +23,8 @@
   fetchJobs = 0
 
 [delta]
-  navigate = true    # use n and N to move between diff sections
-  syntax-theme = Solarized (light)
+  navigate = true  # use n and N to move between diff sections
+	theme = TwoDark
 
 [am]
   threeWay = true
@@ -35,7 +32,7 @@
 [user]
   name = Harshal Sawant
   email = harshalsawant.dev@gmail.com
-  signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7Sz5q/4YN3RJNe+WXXPWvNW+fEfYACYEBJQlxCQ/Bq harshalsawant.dev@gmail.com
+	signingkey = /home/c0d3h01/.ssh/id_ed25519.pub
 
 [github]
   user = c0d3h01
