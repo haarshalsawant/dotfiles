@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     systems.url = "github:nix-systems/default";
 
@@ -22,9 +23,6 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     ghostty.url = "github:/ghostty-org/ghostty";
-    ghostty.inputs.nixpkgs.follows = "nixpkgs";
-    ghostty.inputs.flake-utils.follows = "flake-utils";
-    ghostty.inputs.flake-compat.follows = "";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -102,7 +100,6 @@
           extraSpecialArgs = { inherit inputs outputs userConfig; };
           modules = [
             ./home-manager/home.nix
-            { nixpkgs.config.allowUnfree = true; }
           ];
         };
       };
