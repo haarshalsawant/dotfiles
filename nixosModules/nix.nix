@@ -1,7 +1,5 @@
 {
   lib,
-  inputs,
-  outputs,
   userConfig,
   pkgs,
   ...
@@ -22,10 +20,8 @@
   };
 
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    package = pkgs.nixVersions.latest;
     gc.automatic = true;
-    gc.dates = "03:15";
+    gc.dates = "05:00";
     gc.options = "--delete-older-than 10d";
 
     settings = {
@@ -47,8 +43,6 @@
       experimental-features = [
         "nix-command"
         "flakes"
-        "auto-allocate-uids"
-        "cgroups"
       ];
 
       substituters = [
