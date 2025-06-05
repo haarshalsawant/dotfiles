@@ -14,8 +14,8 @@
   zramSwap = {
     enable = true;
     priority = 100;
-    algorithm = "lz4";
-    memoryPercent = 200;
+    algorithm = "zstd";
+    memoryPercent = 180;
   };
 
   services.fstrim = {
@@ -43,6 +43,7 @@
       "nowatchdog"
       "loglevel=3"
       "mitigations=off"
+      "nvme.noacpi=1"
     ];
 
     kernel.sysctl = { };
