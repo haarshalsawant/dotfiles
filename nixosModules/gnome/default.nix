@@ -34,15 +34,18 @@
     ];
   };
 
-  environment.systemPackages = with pkgs.gnomeExtensions; [
-    dash-to-dock
-    user-themes
-    # blur-my-shell
-    # open-bar
-  ] ++ (with pkgs; [
-    gnome-photos
-    gnome-tweaks
-  ]);
+  environment.systemPackages =
+    with pkgs.gnomeExtensions;
+    [
+      dash-to-dock
+      user-themes
+      # blur-my-shell
+      # open-bar
+    ]
+    ++ (with pkgs; [
+      gnome-photos
+      gnome-tweaks
+    ]);
 
   home-manager.users."${userConfig.username}" = {
     dconf.settings = {
