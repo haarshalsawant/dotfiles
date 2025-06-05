@@ -23,7 +23,7 @@
     enableNixpkgsReleaseCheck = false;
 
     sessionVariables = {
-      EDITOR = "micro";
+      EDITOR = "nvim";
       NIXPKGS_ALLOW_UNFREE = "1";
     };
 
