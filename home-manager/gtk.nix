@@ -4,7 +4,7 @@
   gtk = {
     enable = true;
 
-    theme = {
+    theme = lib.mkDefault {
       name = "WhiteSur-Dark";
       package = pkgs.whitesur-gtk-theme;
     };
@@ -15,22 +15,14 @@
     };
 
     iconTheme = lib.mkDefault {
-      name = "WhiteSur";
+      name = "WhiteSur-dark";
       package = pkgs.whitesur-icon-theme;
     };
-
-    gtk3.extraConfig = lib.mkDefault {
-      "gtk-application-prefer-dark-theme" = true;
-    };
-
-    gtk4.extraConfig = lib.mkDefault {
-      "gtk-application-prefer-dark-theme" = true;
-    };
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-    style.name = "adwaita-dark";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "gtk";
+  #   style.name = "adwaita-dark";
+  # };
 }
