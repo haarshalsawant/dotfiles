@@ -1,13 +1,7 @@
 theme = Belafonte Night
-
-window-height = 200
-window-width = 200
-
 clipboard-read = allow
 clipboard-write = allow
-
-shell-integration = none
+shell-integration = zsh
 macos-option-as-alt = true
-
 gtk-titlebar = true
 background-opacity = 0.8
