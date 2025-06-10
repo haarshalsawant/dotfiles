@@ -8,7 +8,7 @@
 
 {
   imports = [
-    ./gtk.nix
+    ./firefox.nix
     ./spicetify.nix
   ];
 
@@ -29,7 +29,6 @@
       inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Code editors
-      vscode-fhs
       # jetbrains.pycharm-community-bin
       # android-studio
 
@@ -47,7 +46,6 @@
       drawio
       electrum
       qbittorrent
-      yt-dlp
       obs-studio
       libreoffice-qt6-fresh
       # blender-hip
@@ -64,7 +62,6 @@
       curl
       wget
       tree
-      nh
       stow
       zellij
       bat
@@ -86,8 +83,6 @@
       glances
       cheat
       tree-sitter
-      flake-checker
-      sops
 
       # Language Servers
       lua-language-server
