@@ -30,6 +30,9 @@
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    catppuccin.url = "github:catppuccin/nix";
+    nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs-stable";
   };
 
   outputs =
@@ -57,6 +60,7 @@
       forAllSystems = nixpkgs.lib.genAttrs allSystems;
 
       overlays = [
+        inputs.nur.overlays.default
         (final: prev: {
           stable = import nixpkgs-stable {
             system = final.system or "x86_64-linux";
