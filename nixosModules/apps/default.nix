@@ -32,7 +32,6 @@
 
   # Environment packages
   environment.systemPackages = with pkgs; [
-    firefox
     go
     nodejs
     electron
