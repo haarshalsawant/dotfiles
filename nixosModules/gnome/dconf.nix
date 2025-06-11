@@ -7,14 +7,15 @@
         disable-user-extensions = false;
         enabled-extensions = [
           "gsconnect@andyholmes.github.io"
+          "forge@jmmaranan.com"
           "dash-to-dock@micxgx.gmail.com"
         ];
       };
 
-      "org/gnome/settings-daemon/plugins/power" = {
-        power-button-action = "Power Off";
-        sleep-inactive-ac-type = "Power Off";
-      };
+      # "org/gnome/settings-daemon/plugins/power" = {
+      #   power-button-action = "Power Off"; # FIXME always showing suspend
+      #   sleep-inactive-ac-type = "Power Off";
+      # };
 
       # Dask to Dock
       "org/gnome/shell/extensions/dash-to-dock" = {
@@ -23,6 +24,7 @@
 
       # interface
       "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
         enable-hot-corners = false;
         clock-show-weekday = true;
         clock-show-date = true;
