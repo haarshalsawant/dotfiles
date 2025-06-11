@@ -20,9 +20,11 @@
   };
 
   nix = {
-    gc.automatic = true;
-    gc.dates = "05:00";
-    gc.options = "--delete-older-than 10d";
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+    };
 
     settings = {
       warn-dirty = false;
