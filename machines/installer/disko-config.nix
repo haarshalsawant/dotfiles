@@ -8,7 +8,7 @@
           type = "gpt";
           partitions = {
             ESP = {
-              name = "Nix EFI";
+              name = "Nix_EFI";
               size = "512M";
               type = "EF00";
               content = {
@@ -19,7 +19,7 @@
               };
             };
             root = {
-              name = "Nix root";
+              name = "Nix_root";
               size = "100%";
               content = {
                 type = "btrfs";
