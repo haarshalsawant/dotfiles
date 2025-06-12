@@ -45,6 +45,7 @@
       lsd
       tea
       less
+      binutils
       findutils
       hub
       xdg-utils
@@ -58,6 +59,7 @@
       just
       just-formatter
       pre-commit
+      starship
 
       # Language Servers
       lua-language-server
