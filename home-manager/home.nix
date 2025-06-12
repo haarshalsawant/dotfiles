@@ -23,36 +23,6 @@
     enableNixpkgsReleaseCheck = false;
 
     packages = with pkgs; [
-      # Notion Enhancer With patches
-      (pkgs.callPackage ./notion-app-enhanced { })
-
-      inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-      # Code editors
-      vscode-fhs
-      # jetbrains.pycharm-community-bin
-      # android-studio
-
-      # Communication apps
-      vesktop
-      telegram-desktop
-      zoom-us
-      element-desktop
-      signal-desktop
-
-      # Common desktop apps
-      postman
-      github-desktop
-      anydesk
-      drawio
-      electrum
-      qbittorrent
-      obs-studio
-      libreoffice-qt6-fresh
-      # blender-hip
-      # gimp
-      obsidian
-
       # Terminal Utilities
       neovim
       vim
@@ -84,6 +54,10 @@
       glances
       cheat
       tree-sitter
+      devenv
+      just
+      just-formatter
+      pre-commit
 
       # Language Servers
       lua-language-server
