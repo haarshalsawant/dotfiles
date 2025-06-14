@@ -278,7 +278,7 @@ wrap_command() {
   local tool="$1"
   local fallback="$2"
   local func_name="$3"
-  
+
   if command -v "$tool" >/dev/null; then
     eval "${func_name}() {
       if [[ -t 1 && -o interactive ]]; then
@@ -314,7 +314,7 @@ command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd j)"
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
 # ===== Starship Prompt =====
-# command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # ===== Custom Plugin Submodules =====
 if [[ -n ${commands[fzf]} ]]; then
@@ -359,19 +359,19 @@ fignore=(.DS_Store $fignore)
 [[ -d ~/.nix-profile/share/zsh/site-functions ]] && fpath+=(~/.nix-profile/share/zsh/site-functions)
 [[ -d /run/current-system/sw/share/zsh/site-functions/ ]] && fpath+=(/run/current-system/sw/share/zsh/site-functions/)
 
-# Pure Prompt
-PURE_GIT_UNTRACKED_DIRTY=0
-PURE_GIT_PULL=0
-PURE_PROMPT_SYMBOL="%(?.%F{green}.%F{red})%%%f"
-fpath+=($HOME/.zsh-pure)
-zstyle :prompt:pure:path color yellow
-zstyle :prompt:pure:git:branch color yellow
-zstyle :prompt:pure:user color cyan
-zstyle :prompt:pure:host color yellow
-zstyle :prompt:pure:git:branch:cached color red
-RPS1='%(?.%F{magenta}.%F{red}(%?%) %F{magenta})'
-autoload -U promptinit; promptinit
-prompt pure
+# # Pure Prompt
+# PURE_GIT_UNTRACKED_DIRTY=0
+# PURE_GIT_PULL=0
+# PURE_PROMPT_SYMBOL="%(?.%F{green}.%F{red})%%%f"
+# fpath+=($HOME/.zsh-pure)
+# zstyle :prompt:pure:path color yellow
+# zstyle :prompt:pure:git:branch color yellow
+# zstyle :prompt:pure:user color cyan
+# zstyle :prompt:pure:host color yellow
+# zstyle :prompt:pure:git:branch:cached color red
+# RPS1='%(?.%F{magenta}.%F{red}(%?%) %F{magenta})'
+# autoload -U promptinit; promptinit
+# prompt pure
 
 # zsh-autopair
 source "$HOME/.zsh-autopair/autopair.zsh"
