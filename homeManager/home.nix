@@ -60,6 +60,7 @@
       just-formatter
       pre-commit
       starship
+      micro
 
       # Language Servers
       lua-language-server
