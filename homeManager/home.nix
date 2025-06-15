@@ -8,11 +8,10 @@
 
 {
   imports = [
-    ./firefox.nix
     ./spicetify.nix
   ];
 
-  programs.home-manager.enable = true;
+ # programs.home-manager.enable = true;
   # services.syncthing.enable = true;
   manual.manpages.enable = false;
 
@@ -38,7 +37,6 @@
       bat
       zoxide
       ripgrep
-      fzf
       fd
       file
       bashInteractive
@@ -60,7 +58,7 @@
       just-formatter
       pre-commit
       starship
-      micro
+      fzf
 
       # Language Servers
       lua-language-server
