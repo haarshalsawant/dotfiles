@@ -11,9 +11,7 @@
     ./spicetify.nix
   ];
 
- # programs.home-manager.enable = true;
   # services.syncthing.enable = true;
-  manual.manpages.enable = false;
 
   home = {
     username = declarative.username;
