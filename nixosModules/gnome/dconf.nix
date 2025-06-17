@@ -18,13 +18,13 @@
         power-button-action = "interactive";
       };
 
-      # Night Light
-      "org/gnome/settings-daemon/plugins/color" = {
-        night-light-enabled = true;
-        night-light-temperature = 4000;
-        night-light-schedule-from = "20.0";
-        night-light-schedule-to = "8.0";
-      };
+      # # Night Light
+      # "org/gnome/settings-daemon/plugins/color" = {
+      #   night-light-enabled = true;
+      #   night-light-temperature = 4000;
+      #   night-light-schedule-from = "20.0";
+      #   night-light-schedule-to = "8.0";
+      # };
 
       # Dask to Dock
       "org/gnome/shell/extensions/dash-to-dock" = {
@@ -39,7 +39,7 @@
         clock-show-weekday = true;
         clock-show-date = true;
         clock-format = "12h";
-        enable-animations = false;
+        # enable-animations = false;
         show-battery-percentage = true;
       };
 
