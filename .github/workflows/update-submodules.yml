@@ -28,6 +28,6 @@ jobs:
           token: ${{ secrets.DOTFILES }}
 
       - if: steps.pr.outputs.pull-request-number
-        run: gh pr merge ${{ steps.pr.outputs.pull-request-number }} --merge --auto
+        run: gh pr merge ${{ steps.pr.outputs.pull-request-number }} --squash --auto
         env:
           GH_TOKEN: ${{ secrets.DOTFILES }}
