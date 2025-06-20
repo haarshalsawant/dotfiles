@@ -16,12 +16,12 @@
 
   # <-- Coustom modules -->
   myModules = {
-    # docker.enable = true;
+    docker.enable = true;
     # monitoring.enable = true;
-    mysql.enable = true;
-    podman.enable = true;
+    # mysql.enable = true;
+    # podman.enable = true;
     python.enable = true;
-    r.enable = true;
+    # r.enable = true;
     rust.enable = true;
   };
 
