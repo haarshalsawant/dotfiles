@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   declarative,
@@ -9,6 +10,7 @@
 {
   imports = [
     ./spicetify.nix
+    ../secrets
   ];
 
   # services.syncthing.enable = true;
@@ -18,6 +20,7 @@
     homeDirectory = "/home/${declarative.username}";
     stateVersion = lib.trivial.release;
     enableNixpkgsReleaseCheck = false;
+    # passwordFile = config.age.secrets.ssh-key.path; #EXAMPLE
 
     packages = with pkgs; [
       # Let install Home manager

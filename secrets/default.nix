@@ -7,10 +7,10 @@
 
 {
   imports = [
-    inputs.agenix.nixosModules.default
+    inputs.agenix.homeManagerModules.default
   ];
 
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     inputs.agenix.packages.x86_64-linux.default
     age
   ];

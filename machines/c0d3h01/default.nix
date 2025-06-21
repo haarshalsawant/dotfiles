@@ -11,8 +11,6 @@
     ../installer/disko-config.nix
     ./hardware.nix
     ../../nixosModules
-    ../../secrets
-    ../../sops
   ];
 
   documentation.enable = false;
@@ -59,7 +57,7 @@
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
     home = "/home/${declarative.username}";
-    hashedPasswordFile = config.age.secrets.ssh-key.path;
+    # hashedPasswordFile = config.age.secrets.ssh-key.path;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSjL8HGjiSAnLHupMZin095bql7A8+UDfc7t9XCZs8l harshalsawant.dev@gmail.com"
     ];
