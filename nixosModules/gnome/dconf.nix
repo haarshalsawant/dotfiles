@@ -39,6 +39,7 @@
         mounted-icon = true;
         open-app-animation = true;
         edge-distance = 0.48837209302325579;
+        running-indicator-style = 1;
       };
 
       # interface
