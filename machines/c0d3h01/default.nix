@@ -8,8 +8,7 @@
 
 {
   imports = [
-    ../installer/disko-config.nix
-    ./hardware.nix
+    ../installer
     ../../nixosModules
   ];
 

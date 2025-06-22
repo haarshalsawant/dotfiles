@@ -11,16 +11,15 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  # firmware updates
+  services.fwupd.enable = true;
+
   zramSwap = {
     enable = true;
     priority = 100;
     algorithm = "zstd";
-    memoryPercent = 180;
+    memoryPercent = 200;
   };
-
-  environment.systemPackages = with pkgs; [
-    mesa-demos
-  ];
 
   boot.loader = {
     grub = lib.mkDefault {
@@ -44,6 +43,8 @@
       "nowatchdog"
       "loglevel=3"
       "mitigations=off"
+      "elevator=noop"
+      "splash"
     ];
 
     kernel.sysctl = { };

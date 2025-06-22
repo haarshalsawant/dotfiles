@@ -9,6 +9,5 @@
     ./nix.nix
     # ./printing.nix
     ./security.nix
-    ./tweaks.nix
   ];
 }

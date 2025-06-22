@@ -20,12 +20,45 @@
             root = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-                mountOptions = [
-                  "noatime"
-                ];
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+                subvolumes = {
+                  "/@" = {
+                    mountpoint = "/";
+                    mountOptions = [
+                      "compress-force=zstd:3"
+                      "ssd"
+                      "noatime"
+                      "space_cache=v2"
+                      "commit=60"
+                      "discard=async"
+                      "autodefrag"
+                    ];
+                  };
+                  "/@home" = {
+                    mountpoint = "/home";
+                    mountOptions = [
+                      "compress-force=zstd:3"
+                      "ssd"
+                      "noatime"
+                      "space_cache=v2"
+                      "commit=60"
+                      "discard=async"
+                      "autodefrag"
+                    ];
+                  };
+                  "/@nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = [
+                      "compress-force=zstd:3"
+                      "ssd"
+                      "noatime"
+                      "space_cache=v2"
+                      "commit=60"
+                      "discard=async"
+                    ];
+                  };
+                };
               };
             };
           };
