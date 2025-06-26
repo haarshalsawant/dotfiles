@@ -6,5 +6,4 @@ let
 in
 {
   "ssh-key.age".publicKeys = userPublicKeys;
-  "element-key.age".publicKeys = userPublicKeys;
 }
