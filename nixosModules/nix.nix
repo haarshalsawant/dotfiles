@@ -10,6 +10,7 @@
   networking.hostName = userConfig.hostname;
 
   programs.nix-ld.enable = true;
+  services.ollama.enable = true;
 
   nixpkgs = {
     config = {
