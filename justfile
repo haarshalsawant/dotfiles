@@ -1,3 +1,10 @@
+bootstrap:
+    sudo nix --experimental-features "nix-command flakes" run \
+        github:nix-community/disko/latest -- \
+        --mode destroy,format,mount ./machines/installer/disko-config.nix
+    just swapfileon
+    sudo nixos-install --flake .#devbox
+
 switch:
     sudo nixos-rebuild switch --flake '.#devbox'
 
@@ -13,11 +20,11 @@ update:
 check:
     nix flake check
 
-swapon:
+swapfileon:
     btrfs filesystem mkswapfile --size 4G swapfile
     sudo swapon swapfile
 
-swapoff:
+swapfileoff:
     sudo swapoff swapfile
     rm swapfile
 
