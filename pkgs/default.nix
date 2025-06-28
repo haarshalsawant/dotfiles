@@ -80,11 +80,13 @@
     # Terminal tools
     electron
     toolbox
+    powershell
     umlet
     gdb
     gcc
     gnumake
     cmake
+    cmakeWithGui
     ninja
     clang
     pkg-config
