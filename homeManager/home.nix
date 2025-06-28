@@ -13,6 +13,7 @@
     inputs.sops-nix.homeManagerModules.sops
 
     ./spicetify.nix
+    ./gtk.nix
   ];
 
   # services.syncthing.enable = true;
