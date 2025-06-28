@@ -49,7 +49,7 @@ fi
 
 # Path Configuration
 for dir in "$HOME/.local/bin" "$HOME/.rustup" "$HOME/.cargo/bin" "$HOME/go/bin" \
-           "$HOME/.npm-global/bin" "$HOME/bin" "$HOME/.cabal/bin"; do
+           "$HOME/.npm-global/bin" "$HOME/bin" "$HOME/.cabal/bin" "$HOME/.cargo/env"; do
   [ -d "$dir" ] && PATH="$dir:$PATH"
 done
 typeset -U path
