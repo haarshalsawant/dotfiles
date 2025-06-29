@@ -4,23 +4,6 @@
 }:
 
 {
-  # <-- Enable flatpak repo --> :
-  # flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  # services.flatpak.enable = true;
-
-  # AppImage support
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
-
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark;
-    dumpcap.enable = true;
-    usbmon.enable = true;
-  };
-
   # <-- Environment packages -->
   environment.systemPackages = with pkgs; [
 
@@ -59,11 +42,11 @@
     libreoffice-qt6-fresh
     obsidian
 
-    # Terminal tools
+    # <-- Tools -->
     electron
     toolbox
-    powershell
     umlet
+
     gdb
     gcc
     gnumake
@@ -72,6 +55,7 @@
     ninja
     clang
     pkg-config
+
     gtk4
     glib
     pango
