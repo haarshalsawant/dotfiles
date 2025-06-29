@@ -4,10 +4,10 @@
   # GTK theming
   gtk = {
     enable = true;
-    theme = {
-      name = "Catppuccin-Mocha-Dark";
-      package = pkgs.catppuccin-gtk;
-    };
+    # theme = {
+    #   name = "Catppuccin-Mocha-Dark";
+    #   package = pkgs.catppuccin-gtk;
+    # };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
