@@ -8,7 +8,7 @@
 
 {
   imports = [
-    inputs.sops-nix.nixosModules.sops
+    # inputs.sops-nix.nixosModules.sops
 
     ../installer.nix
     ../../nixosModules
@@ -49,21 +49,21 @@
 
   users.mutableUsers = false;
 
-  sops.age = {
-    keyFile = "/home/c0d3h01/.config/sops/age/keys.txt";
-    sshKeyPaths = [
-      "/home/c0d3h01/.ssh/id_ed25519"
-    ];
-  };
+  # sops.age = {
+  #   keyFile = "/home/c0d3h01/.config/sops/age/keys.txt";
+  #   sshKeyPaths = [
+  #     "/home/c0d3h01/.ssh/id_ed25519"
+  #   ];
+  # };
 
-  sops.secrets = {
-    "passwd" = {
-      neededForUsers = true;
-      sopsFile = ../../secrets/c0d3h01/passwd.enc;
-      path = "/run/secrets/passwd";
-      format = "binary";
-    };
-  };
+  # sops.secrets = {
+  #   "passwd" = {
+  #     neededForUsers = true;
+  #     sopsFile = ../../secrets/c0d3h01/passwd.enc;
+  #     path = "/run/secrets/passwd";
+  #     format = "binary";
+  #   };
+  # };
 
   users.users = {
     root = {
@@ -78,7 +78,7 @@
       ignoreShellProgramCheck = true;
       home = "/home/${userConfig.username}";
       # hashedPasswordFile = config.sops.secrets.passwd.path;
-      hashedPassword = "$6$kSA3b9/kB7OH7iC7$vLinn51U1LLTWo1BGIY6JhqKNrzZ7Xj6xOwhbQv4fZRQq99qkZBhqshW/5LjcAJygLH5G2XoK6dfkrwgKycUY0";
+      hashedPassword = "$6$aXq5Okrj6w0/MKTc$Bx9M4vijoRTa7wd8W0.xOr.kItJo4o9RYcvWto/o7VybA9DIG2GcFYPw0W6Y1wZZ0C/RIuaJOkrCCa.4slxGG.";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSjL8HGjiSAnLHupMZin095bql7A8+UDfc7t9XCZs8l harshalsawant.dev@gmail.com"
       ];

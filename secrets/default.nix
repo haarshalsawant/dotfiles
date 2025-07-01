@@ -14,14 +14,19 @@
     };
 
     secrets = {
-      "passwd" = {
-        sopsFile = ./c0d3h01/passwd.enc;
-        path = "/${config.home.homeDirectory}/.config/sops/age/passwd";
+      "password" = {
+        sopsFile = ./c0d3h01/password;
+        path = "/${config.home.homeDirectory}/.config/sops/age/password";
         format = "binary";
       };
-      "element-key" = {
-        sopsFile = ./c0d3h01/element-key.enc;
-        path = "/${config.home.homeDirectory}/.config/sops/age/element-key";
+      "element" = {
+        sopsFile = ./c0d3h01/element;
+        path = "/${config.home.homeDirectory}/.config/sops/age/element";
+        format = "binary";
+      };
+      "solana" = {
+        sopsFile = ./c0d3h01/solana;
+        path = "/${config.home.homeDirectory}/.config/sops/age/solana";
         format = "binary";
       };
     };
