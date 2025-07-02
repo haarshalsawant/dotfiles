@@ -49,13 +49,6 @@
       "splash"
     ];
 
-    kernel.sysctl = {
-      # "vm.swappiness" = 10;
-      # "vm.vfs_cache_pressure" = 50;
-      # "kernel.sched_autogroup_enabled" = 0;
-      # "kernel.numa_balancing" = 0;
-    };
-
     initrd = {
       verbose = false;
       kernelModules = [ ];
