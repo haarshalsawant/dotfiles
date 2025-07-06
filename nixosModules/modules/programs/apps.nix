@@ -46,5 +46,10 @@
     ninja
     clang
     pkg-config
+    python313
+    R
+    go
+    semeru-bin
+    nodejs
   ];
 }
