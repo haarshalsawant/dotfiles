@@ -318,7 +318,7 @@ load_plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "onedark"
+theme "everforest-dark"
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -430,4 +430,4 @@ show_release_notes false
 // Whether to show startup tips on session start
 // Default: true
 //
-// show_startup_tips false
+show_startup_tips false
