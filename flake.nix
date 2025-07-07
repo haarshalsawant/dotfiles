@@ -2,7 +2,7 @@
   description = "NixOS Flake: WorkSpace";
 
   inputs = {
-    nixpkgs.url = "git+https://github.com/c0d3h01/nixpkgs?shallow=1&ref=master";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable-small";
     systems.url = "github:nix-systems/default";
 
     disko.url = "github:nix-community/disko";
@@ -80,12 +80,6 @@
             };
           }
         ];
-      };
-
-      packages.${system} = {
-        iso = self.nixosConfigurations.${userConfig.hostname}.config.system.build.isoImage;
-        diskImage = self.nixosConfigurations.${userConfig.hostname}.config.system.build.diskImage;
-        vmImage = self.nixosConfigurations.${userConfig.hostname}.config.system.build.vmImage;
       };
     };
 }
