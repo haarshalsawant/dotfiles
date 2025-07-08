@@ -1,5 +1,7 @@
 # localhost dotfiles
 
+[![Linux](https://img.shields.io/badge/Linux-cad3f5?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/khaneliman/dotfiles/blob/main/dots/linux/)
+
 ## Clean Installation
 
 ```bash
