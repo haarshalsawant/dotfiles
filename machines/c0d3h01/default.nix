@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   config,
   pkgs,
@@ -16,8 +17,8 @@ in
   imports = [
     # inputs.sops-nix.nixosModules.sops
 
-    ../installer.nix
-    ../../nixosModules
+    ./hardware.nix
+    ../../nixosModules/c0d3h01
   ];
 
   time.timeZone = "Asia/Kolkata";
@@ -70,6 +71,9 @@ in
   #     format = "binary";
   #   };
   # };
+
+  programs.zsh.enable = true;
+  security.sudo.execWheelOnly = lib.mkForce false;
 
   users.users = {
     root = {

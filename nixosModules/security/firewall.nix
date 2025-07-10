@@ -1,10 +1,9 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
-  security.sudo.execWheelOnly = lib.mkForce false;
-
   networking.firewall = {
     enable = true;
+    package = pkgs.iptables;
     allowPing = false;
 
     # TCP Ports
@@ -13,6 +12,7 @@
       80 # (If running a local web dev server)
       443 # (Same as above)
       1716 # GSConnect / KDE Connect
+      8080 # HTTP
     ];
 
     # UDP Ports

@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   userConfig,
   ...
@@ -9,6 +10,14 @@
   services.desktopManager.gnome.enable = true;
   services.displayManager.gdm.enable = true;
   services.gnome.gnome-initial-setup.enable = false;
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-remote-desktop.enable = lib.mkForce false;
+  services.gnome.glib-networking.enable = true;
+  services.udev.packages = [ pkgs.gnome-settings-daemon ];
+
+  # Disable xterm
+  services.xserver.desktopManager.xterm.enable = false;
+  services.xserver.excludePackages = [ pkgs.xterm ];
 
   programs.kdeconnect = {
     enable = true;

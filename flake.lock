@@ -95,6 +95,26 @@
         "type": "github"
       }
     },
+    "hosts": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751993951,
+        "narHash": "sha256-S5ci5nRpuLa9u2zM6Q1kitoXavB3p1Zp4rq1VMCjcos=",
+        "owner": "StevenBlack",
+        "repo": "hosts",
+        "rev": "90e1c13433a51d986553f4902be2ca564157bb92",
+        "type": "github"
+      },
+      "original": {
+        "owner": "StevenBlack",
+        "repo": "hosts",
+        "type": "github"
+      }
+    },
     "nixgl": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -187,6 +207,7 @@
       "inputs": {
         "disko": "disko",
         "home-manager": "home-manager",
+        "hosts": "hosts",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",
         "pre-commit-hooks": "pre-commit-hooks",

@@ -4,6 +4,8 @@
 }:
 
 {
+  services.ollama.enable = true;
+
   # <-- Environment packages -->
   environment.systemPackages = with pkgs; [
 
@@ -11,7 +13,7 @@
     firefox
 
     # Notion Enhancer With patches
-    (pkgs.callPackage ./_notion-app-enhanced { })
+    (pkgs.callPackage ./notion-app-enhanced { })
 
     # Terminal
     kitty
