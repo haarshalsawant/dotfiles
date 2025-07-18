@@ -7,19 +7,21 @@
   home-manager.users.c0d3h01 = {
     secrets.enable = false;
 
-    garden.programs.defaults = {
-      shell = "zsh";
-      browser = "firefox";
+    garden = {
+      profiles = {
+        pentesting.enable = true;
+      };
+
+      programs.defaults = {
+        shell = "zsh";
+        browser = "firefox";
+      };
     };
 
     programs = {
       gnome-settings.enable = true;
       # syncthing.enable = false;
       git.signing.key = "3E7C7A1B5DEDBB03";
-
-      # Hyprland Environment
-      # hyprland.enable = true;
-      # rofi.enable = true;
 
       # browser
       firefox.enable = true;

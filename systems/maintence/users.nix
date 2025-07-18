@@ -1,11 +1,5 @@
 {
-  garden.system = {
-    mainUser = "c0d3h01";
-    users = [ "c0d3h01" ];
-  };
-
   home-manager.users.c0d3h01 = {
-
     secrets.enable = false;
 
     garden.programs.defaults = {
@@ -16,11 +10,7 @@
     programs = {
       # Home Manager Gnome Settings
       gnome-settings.enable = false;
-
-      # hyprland.enable = true;
-      # rofi.enable = true;
-
-      syncthing.enable = false;
+      # syncthing.enable = false;
 
       git.signing.key = "3E7C7A1B5DEDBB03";
 
