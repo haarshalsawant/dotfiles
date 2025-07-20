@@ -1,24 +1,28 @@
--- Customize Mason
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
-local suggested_packages = {}
+-- Customize Mason
 
 ---@type LazySpec
 return {
-	-- use mason-tool-installer for automatically installing Mason packages
-	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		--opts = {
-		--  run_on_start = false
-		--},
-		opts = function(_, opts)
-			local core = require("astrocore")
-			local data_dir = vim.fn.stdpath("data")
-			core.list_insert_unique(suggested_packages, opts.ensure_installed)
-			local f = io.open(data_dir .. "/suggested-pkgs.json", "w")
-			f:write(vim.json.encode(suggested_packages))
-			f:close()
-			opts.run_on_start = false
-			opts.integrations["mason-nvim-dap"] = false
-		end,
-	},
+  -- use mason-tool-installer for automatically installing Mason packages
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    -- overrides `require("mason-tool-installer").setup(...)`
+    opts = {
+      -- Make sure to use the names found in `:Mason`
+      ensure_installed = {
+        -- install language servers
+        "lua-language-server",
+
+        -- install formatters
+        "stylua",
+
+        -- install debuggers
+        "debugpy",
+
+        -- install any other package
+        "tree-sitter-cli",
+      },
+    },
+  },
 }

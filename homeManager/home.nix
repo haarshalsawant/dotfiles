@@ -1,5 +1,5 @@
 {
-  userConfig,
+  username,
   lib,
   pkgs,
   inputs,
@@ -45,47 +45,29 @@ let
 
 in
 {
-  imports =
-    # Sops secret management for homeland
-    [
-      inputs.sops-nix.homeManagerModules.sops
-      ../secrets
-    ]
+  imports = [
+    ../secrets
+  ]
 
-    # Automatically import all modules from homeManager/modules ;)
-    ++ (autoImportModules homeManagerModulesPath);
+  # Automatically import all modules from homeManager/modules ;)
+  ++ (autoImportModules homeManagerModulesPath);
 
-  # services.syncthing.enable = true;
-
-  manual = {
-    html.enable = false;
-    json.enable = false;
-    manpages.enable = false;
-  };
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
   home = {
-    username = userConfig.username;
-    homeDirectory = "/home/${userConfig.username}";
+    username = username;
+    homeDirectory = "/home/${username}";
     stateVersion = lib.trivial.release;
     enableNixpkgsReleaseCheck = false;
 
-    sessionVariables = {
-      MOZ_ENABLE_WAYLAND = "1"; # for Firefox/Chrome to integrate properly
-    };
-
     packages = with pkgs; [
-
       # Secrets management tool
-      age
       sops
-
-      # Let install Home manager
-      home-manager
 
       # Terminal Utilities
       neovim
       tmux
-      coreutils
       fastfetch
       xclip
       curl
@@ -98,28 +80,25 @@ in
       ripgrep
       fd
       file
+      bash
       bashInteractive
       lsd
       tea
       less
-      binutils
-      findutils
-      xdg-utils
-      pciutils
-      inxi
       procs
       glances
       cheat # CheatSheet
-      tree-sitter
-      # devenv
+      bottom
       just
-      pre-commit
-      fzf
-      claude-code
+      just-formatter
+      fzf # fuzzy finder CLI
+      tree-sitter # Parser generator tool
+      gdu # Disk usage analyzer CLI
 
       # Language Servers
       lua-language-server
       nil
+      just-lsp
 
       # Extractors
       unzip
@@ -137,13 +116,5 @@ in
       mergiraf
       lazygit
     ];
-  };
-
-  programs = {
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      config.log_filter = "ignore-everything-forever";
-    };
   };
 }

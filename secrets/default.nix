@@ -1,9 +1,13 @@
 {
+  inputs,
+  self,
   config,
   ...
 }:
 
 {
+  imports = [ inputs.sops.homeManagerModules.sops ];
+
   sops = {
     age = {
       keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
@@ -13,18 +17,13 @@
     };
 
     secrets = {
-      "password" = {
-        sopsFile = ./c0d3h01/password;
-        path = "/${config.home.homeDirectory}/.config/sops/age/password";
-        format = "binary";
-      };
       "element" = {
-        sopsFile = ./c0d3h01/element;
+        sopsFile = "${self}/secrets/element";
         path = "/${config.home.homeDirectory}/.config/sops/age/element";
         format = "binary";
       };
       "solana" = {
-        sopsFile = ./c0d3h01/solana;
+        sopsFile = "${self}/secrets/solana";
         path = "/${config.home.homeDirectory}/.config/sops/age/solana";
         format = "binary";
       };
