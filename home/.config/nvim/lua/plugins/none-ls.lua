@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize None-ls sources
 
 ---@type LazySpec
@@ -16,23 +14,15 @@ return {
     -- Only insert new sources, do not replace the existing ones
     -- (If you wish to replace, use `opts.sources = {}` instead of the `list_insert_unique` function)
     opts.sources = require("astrocore").list_insert_unique(opts.sources, {
-      -- Set a formatter
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.prettier,
-
-			-- go
+      null_ls.builtins.completion.spell,
 			null_ls.builtins.formatting.gofumpt,
 			null_ls.builtins.formatting.goimports,
-			null_ls.builtins.diagnostics.golangci_lint,
-			null_ls.builtins.code_actions.impl,
-
-			-- c/c++
+			-- null_ls.builtins.diagnostics.golangci_lint,
+			-- null_ls.builtins.code_actions.impl,
 			null_ls.builtins.formatting.clang_format,
-
-			-- bash
-			null_ls.builtins.formatting.shfmt.with({
-				args = { "-i", "2" },
-			}),
+      null_ls.builtins.formatting.shfmt.with({ args = { "-i", "2" } }),
     })
   end,
 }
