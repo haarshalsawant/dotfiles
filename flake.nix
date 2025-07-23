@@ -7,8 +7,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops.url = "github:c0d3h01/sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
-    nixgl.url = "github:guibou/nixGL";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nixgl.url = "github:c0d3h01/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
+    spicetify.url = "github:Gerg-L/spicetify-nix";
+    spicetify.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -23,7 +25,7 @@
       username = "c0d3h01";
       hostname = "neo";
       homeDirectory = "/home/${username}";
-      homeModule = ./homeManager/home.nix;
+      homeModule = ./homeManager;
     in
     {
       # Nix Formatter
