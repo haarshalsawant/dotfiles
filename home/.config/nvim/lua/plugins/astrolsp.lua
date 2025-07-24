@@ -40,20 +40,20 @@ return {
     servers = {
       "pyright",
       "bashls",
-			"clangd",
-			"denols",
-			"gopls",
-			"lua_ls",
-			"marksman",
-			"nil_ls",
-			"basedpyright",
-			"ruff",
-			"rust_analyzer",
-			"taplo",
-			"terraformls",
-			"typos_lsp",
-			"yamlls",
-			"vtsls"
+      "clangd",
+      "denols",
+      "gopls",
+      "lua_ls",
+      "marksman",
+      "nil_ls",
+      "basedpyright",
+      "ruff",
+      "rust_analyzer",
+      "taplo",
+      "terraformls",
+      "typos_lsp",
+      "yamlls",
+      "vtsls",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -114,7 +114,6 @@ return {
     on_attach = function(client, bufnr)
       -- this would disable semanticTokensProvider for all clients
       -- client.server_capabilities.semanticTokensProvider = nil
-
     end,
   },
 }
