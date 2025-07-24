@@ -6,6 +6,7 @@
     ./fd.nix
     ./fzf.nix
     ./gh.nix
+    ./lazygit.nix
     ./lsd.nix
     ./nix-your-shell.nix
     ./ripgrep.nix
