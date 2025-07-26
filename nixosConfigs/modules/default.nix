@@ -4,6 +4,7 @@
     ./hardware
     ./networking
     ./nix
+    ./programs
     ./security
     ./services
     ./system
