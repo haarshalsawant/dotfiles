@@ -53,7 +53,6 @@ local map = function(key, mods, action)
 end
 
 map("Enter", "ALT", act.ToggleFullScreen)
-
 map("e", "CTRL|SHIFT", getNewName)
 map("o", { "LEADER", "SUPER" }, openUrl)
 map("t", "ALT", changePalette)

@@ -19,6 +19,7 @@ require("bar").apply_to_config(c, {
 
 if utils.is_linux() then
 	c.window_background_opacity = 0.92
+	c.win32_system_backdrop = "Mica"
 elseif utils.is_darwin() then
 	c.window_background_opacity = 0.92
 	c.macos_window_background_blur = 15
@@ -57,7 +58,7 @@ c.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 
 -- fonts
 local font = wezterm.font_with_fallback({
-	{ family = "JetBrainsMono Nerd Font" },
+	{ family = "JetBrains Mono" },
 })
 c.font = font
 c.font_size = 12

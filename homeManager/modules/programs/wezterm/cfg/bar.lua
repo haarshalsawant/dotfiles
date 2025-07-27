@@ -24,7 +24,7 @@ local config = {
 		},
 	},
 	tabs = {
-		numerals = "arabic", -- or "roman"
+		numerals = "roman", -- or "roman" | "arabic"
 		pane_count = "superscript", -- or "subscript", false
 		brackets = {
 			active = { "", ":" },
