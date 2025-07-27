@@ -1,5 +1,5 @@
 {
-  description = "Home Manager Flake for Dotfiles";
+  description = "Harshal (c0d3h01)'s dotfiles";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -50,8 +50,6 @@
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
-
       imports = [
         ./flake-parts
         ./homeManager/flake-module.nix
