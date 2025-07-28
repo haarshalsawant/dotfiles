@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  hosts = import ../lib/hosts.nix;
+  hosts = import ../hostConf;
 
   # Function to create a Home Manager configuration for a host
   mkHomeConfiguration =

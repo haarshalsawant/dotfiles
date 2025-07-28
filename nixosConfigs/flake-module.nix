@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  hosts = import ../lib/hosts.nix;
+  hosts = import ../hostConf;
 
   # Function to create a NixOS configuration for a host
   mkNixosSystem =

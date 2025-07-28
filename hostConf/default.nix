@@ -12,7 +12,6 @@
       hasGUI = true;
       bootloader = "systemd"; # Options = "systemd" | "grub"
       gpuType = "amd";
-      opengl = true;
       hasBattery = true;
       gaming = false;
     };
@@ -23,18 +22,14 @@
     };
 
     dev = {
+      ollama = true;
+      tabby = false;
       wine = false;
       container = "podman";
-      db = false;
+      db = true;
       defaultEditor = "nvim";
       shell = "zsh";
       terminalFont = "JetBrains Mono";
-      languages = [
-        "rust"
-        "python"
-        "javascript"
-        "nix"
-      ];
     };
   };
 }
