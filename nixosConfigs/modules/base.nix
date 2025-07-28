@@ -1,8 +1,6 @@
 {
   lib,
-  config,
   pkgs,
-  inputs,
   userConfig,
   hostName,
   ...
@@ -36,18 +34,25 @@
   # Run dynamically linked librarys.
   programs.nix-ld.enable = true;
 
-  # Configure X11 only if GUI is enabled
+  services.libinput.enable = lib.mkIf (userConfig.machine.type == "laptop") true;
+  services.libinput.touchpad.tapping = lib.mkIf (userConfig.machine.type == "laptop") true;
+
+  # Configure X11
   services.xserver = lib.mkIf userConfig.machine.hasGUI {
     enable = true;
     xkb = {
-      layout = "us";
-      variant = "";
+      layout = "us,in";
+      variant = ""; # Standard QWERTY
+      options = "grp:alt_shift_toggle";
     };
-    # Only set video drivers if specified
-    videoDrivers = lib.mkIf (userConfig.machine.gpuType != null) [ userConfig.machine.gpuType ];
+
+    videoDrivers = [
+      "modesetting"
+      "fbdev"
+    ];
   };
 
-  # Timezone and locale
+  # Timezone and locale - INDIAN timing
   time.timeZone = "Asia/Kolkata";
   i18n = {
     defaultLocale = "en_IN";
