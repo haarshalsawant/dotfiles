@@ -50,6 +50,7 @@
       armadillo # C++ linear algebra library
       blitz # Array library for C++
       appvm # Nix based app-vm
+      neovim # EDITOR
       mpi
       tmux
       fastfetch

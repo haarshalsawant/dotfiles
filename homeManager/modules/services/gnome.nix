@@ -14,14 +14,14 @@ in
     programs.gnome-shell = {
       enable = true;
       extensions = [
-        {
-          id = "ding@rastersoft.com";
-          package = pkgs.gnomeExtensions.desktop-icons-ng-ding;
-        }
         # {
-        #   id = "gsconnect@andyholmes.github.io";
-        #   package = pkgs.gnomeExtensions.gsconnect;
+        #   id = "ding@rastersoft.com";
+        #   package = pkgs.gnomeExtensions.desktop-icons-ng-ding;
         # }
+        {
+          id = "gsconnect@andyholmes.github.io";
+          package = pkgs.gnomeExtensions.gsconnect;
+        }
         # {
         #   id = "dash-to-dock@micxgx.gmail.com";
         #   package = pkgs.gnomeExtensions.dash-to-dock;
