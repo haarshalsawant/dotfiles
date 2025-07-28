@@ -32,7 +32,7 @@ in
     environment.systemPackages = with pkgs; [
       mysql-workbench
       mariadb-client # Command line client
-      phpmyadmin # Web interface
+      # phpmyadmin # Web interface
     ];
   };
 }
