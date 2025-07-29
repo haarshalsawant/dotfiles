@@ -70,9 +70,9 @@ in
   # ZRAM configuration
   zramSwap = {
     enable = true;
-    priority = 100;
-    algorithm = "zstd";
-    memoryPercent = if isLaptop then 150 else 100;
+    priority = 32767; # Highest priority
+    algorithm = "lz4";
+    memoryPercent = if isLaptop then 200 else 100;
   };
 
   # Hardware sensors service
@@ -85,6 +85,10 @@ in
       RemainAfterExit = true;
     };
   };
+
+  # handle ACPI events
+  services.acpid.enable = true;
+  hardware.acpilight.enable = true;
 
   boot.loader = {
     timeout = lib.mkForce 5;
@@ -120,13 +124,16 @@ in
 
     # Dynamic kernel modules
     kernelModules = [
-      "acpi_cpufreq" # CPU frequency scaling
+      "acpi_call"
       "fuse" # Filesystem in Userspace
     ]
     ++ cpuKernelModules
     ++ gpuKernelModules;
 
-    extraModulePackages = [ ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      acpi_call
+      cpupower
+    ];
 
     supportedFilesystems = [
       "ntfs"
@@ -146,6 +153,7 @@ in
       "usbcore.autosuspend=-1"
       "pti=auto"
       "iommu=pt"
+      "nohz=on"
     ]
     ++ cpuKernelParams
     ++ laptopKernelParams;
@@ -154,7 +162,7 @@ in
       verbose = false;
       compressor = "zstd";
       compressorArgs = [
-        "-19"
+        "-3"
         "-T0"
       ];
 
